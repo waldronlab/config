@@ -37,7 +37,7 @@ autocmd BufNewFile,BufRead NEWS,NEWS.md,README.md set spell "turns on spell chec
 set paste		" turns on traditional pasting of text
 set number 		" turns line numbering on
 set ruler		" show the cursor position all the time
-colorscheme torte " sets color scheme
+colorscheme default " sets color scheme
 " default (black bkgr), torte (black bgr), murphy (black bkgr),
 " elflord (black bkgr), blue (blue bkgr), morning (white bkgr), shine (white bkgr) 
 
@@ -143,7 +143,7 @@ map Q gq
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
+  set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
   set hlsearch
 endif
 
@@ -301,7 +301,11 @@ set directory=~/.vim/backup
 " let R_path = '/home/user/src/svn/r-devel/R/bin'
 " let R_args = ['--no-save', '--no-restore']
 
-set colorcolumn=80
+if exists('+colorcolumn')
+    set colorcolumn=80
+else
+    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 
 " remove trailing whitespace on save (R files)
 autocmd BufWritePre *.R :%s/\s\+$//e
