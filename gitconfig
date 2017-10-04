@@ -1,0 +1,19 @@
+[user]
+    name = FooBar
+    email = commits@email.com
+[merge]
+	tool = meld
+[color]
+	ui = true
+	diff = true
+	status = true
+	branches = true
+	branch = true
+[push]
+	default = matching
+[diff]
+	tool = meld
+[core]
+	editor = vim
+[alias]
+	hist = log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
