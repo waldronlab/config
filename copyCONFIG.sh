@@ -4,7 +4,9 @@
 
 # It will NOT overwrite any existing files
 
-if [[ ${1} == "ssh-slash-config" ]]; then
+if [[ ${1} == "README.md" || ${1} == "copyCONFIG.sh" ]]; then
+    echo "Nothing to do with ${1}"
+elif [[ ${1} == "ssh-slash-config" ]]; then
     cp -vn ./${1} $HOME/.ssh/config
 else
     cp -vn ./${1} $HOME/.${1}
