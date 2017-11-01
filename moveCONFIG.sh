@@ -4,5 +4,8 @@
 
 # It will NOT overwrite any existing files
 
-cp -vn ${1} ~/.${1}
-
+if [[ ${1} == "ssh-slash-config" ]]; then
+    cp -vn ./${1} $HOME/.ssh/config
+else
+    cp -vn ./${1} $HOME/.${1}
+fi
