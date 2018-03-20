@@ -19,8 +19,8 @@ alias del=/home/$USER/src/move_to_trash.sh
 
 ## set USER to your USERNAME
 
-alias Rrel="R_LIBS_USER=/home/$USER/R/x86_64-pc-linux-gnu-library/bioc-release /home/$USER/src/svn/r-releaseR/bin/R --no-save --no-restore-data --no-environ"
-alias Rdev="R_LIBS_USER=/home/$USER/R/x86_64-pc-linux-gnu-library/bioc-devel /home/$USER/src/svn/r-release/R/bin/R --no-save --no-restore-data --no-environ"
+alias Rrel="R_LIBS_USER=/home/$USER/R/x86_64-pc-linux-gnu-library/bioc-release /home/$USER/src/svn/r-release/R/bin/R --no-save --no-restore-data --no-environ"
+alias Rdev="R_LIBS_USER=/home/$USER/R/x86_64-pc-linux-gnu-library/bioc-devel /home/$USER/src/svn/r-devel/R/bin/R --no-save --no-restore-data --no-environ"
 alias rstudio="R_LIBS_USER=/home/$USER/R/x86_64-pc-linux-gnu-library/bioc-devel rstudio --no-save --no-restore-data"
 
 alias buildr='Rdev CMD build --no-build-vignettes'
