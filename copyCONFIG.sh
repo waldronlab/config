@@ -14,7 +14,7 @@ elif [[ ${1} == "version_bump.sh" ]]; then
     if [ ! -f $HOME/.bash_aliases ]; then
         touch $HOME/.bash_aliases
     fi
-    echo "alias bump='/home/$USER/src/version_bump.sh" >> $HOME/.bash_aliases
+    echo "alias bump='/home/$USER/src/version_bump.sh'" >> $HOME/.bash_aliases
 else
     cp -vn ./${1} $HOME/.${1}
 fi
