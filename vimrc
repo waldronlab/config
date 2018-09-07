@@ -291,6 +291,20 @@ endfunction
 " Use pathogen vim plugin
 " execute pathogen#infect()
 
+" Remap capslock key to escape inside vim
+" au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+" au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+
+" Use this as your backup directory for swp files
+" set backupdir=~/.vim/backup
+" set directory=~/.vim/backup
+
+" let R_path = "/home/${USER}/src/svn/r-release/R/bin"
+" let R_args = ['--no-save', '--no-restore']
+
+" let cmdline_app = {}
+" let cmdline_app['sh'] = '/bin/bash'
+
 if exists('+colorcolumn')
     set colorcolumn=80
 else
@@ -300,17 +314,8 @@ endif
 let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
-" Remap capslock key to escape inside vim
-" au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-" au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
-
-" Use this as your backup directory for swp files
-" set backupdir=~/.vim/backup
-" set directory=~/.vim/backup
-
-" let vimrplugin_r_path = "/home/mr148/src/svn/r-devel/R/bin"
-" let vimrplugin_r_args = "--no-save --no-restore"
-
 " remove trailing whitespace on save (R files)
 autocmd BufWritePre *R :%s/\s\+$//e
+autocmd BufWritePre *.Rmd :%s/\s\+$//e
+autocmd BufWritePre *.sh :%s/\s\+$//e
 
