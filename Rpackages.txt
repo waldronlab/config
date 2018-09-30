@@ -25,6 +25,7 @@ clusterExperiment
 codetools
 cometExactTest
 ComplexHeatmap
+consensusOV
 cowplot
 curatedMetagenomicData
 curatedOvarianData
