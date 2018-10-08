@@ -111,6 +111,7 @@ rsconnect
 rtracklayer
 safe
 scone
+Seurat
 shape
 SingleCellExperiment
 slam
