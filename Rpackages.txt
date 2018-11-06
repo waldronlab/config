@@ -117,6 +117,7 @@ slingshot
 SparseM
 SPIA
 SummarizedExperiment
+tidyverse
 topGO
 TxDb.Hsapiens.UCSC.hg19.knownGene
 TxDb.Hsapiens.UCSC.hg38.knownGene
