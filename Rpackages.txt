@@ -5,7 +5,6 @@ ALL
 AnnotationDbi
 AnnotationForge
 AnnotationHub
-AnnotationHub
 apeglm
 aroma.light
 beachmat
@@ -31,7 +30,6 @@ curatedMetagenomicData
 curatedOvarianData
 curatedTCGAData
 dbplyr
-DelayedArray
 DelayedArray
 DelayedMatrixStats
 DESeq
@@ -128,5 +126,4 @@ wordcloud
 xml2
 zinbwave
 zoo
-#after this line install on devel only
 seandavi/SRAdbV2
