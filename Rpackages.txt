@@ -5,7 +5,6 @@ ALL
 AnnotationDbi
 AnnotationForge
 AnnotationHub
-AnnotationHub
 apeglm
 aroma.light
 beachmat
@@ -25,12 +24,12 @@ clusterExperiment
 codetools
 cometExactTest
 ComplexHeatmap
+consensusOV
 cowplot
 curatedMetagenomicData
 curatedOvarianData
 curatedTCGAData
 dbplyr
-DelayedArray
 DelayedArray
 DelayedMatrixStats
 DESeq
@@ -110,6 +109,7 @@ rsconnect
 rtracklayer
 safe
 scone
+Seurat
 shape
 SingleCellExperiment
 slam
@@ -117,6 +117,7 @@ slingshot
 SparseM
 SPIA
 SummarizedExperiment
+tidyverse
 topGO
 TxDb.Hsapiens.UCSC.hg19.knownGene
 TxDb.Hsapiens.UCSC.hg38.knownGene
@@ -126,5 +127,4 @@ wordcloud
 xml2
 zinbwave
 zoo
-#after this line install on devel only
 seandavi/SRAdbV2
