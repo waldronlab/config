@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Usage - any other invocation will cause an error at the docker pull stage:
+# bioc-docker release
+# bioc-docker devel
+
 version=$1
 
 docker pull bioconductor/"$version"_core2
