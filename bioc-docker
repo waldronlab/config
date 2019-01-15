@@ -1,0 +1,16 @@
+#!/bin/bash
+
+version=$1
+
+docker pull bioconductor/"$version"_core2
+
+mkdir -p "~/.docker-$version-packages"
+
+docker run -e PASSWORD=rstudiopassword \
+      -v ~/git:/home/rstudio/git  \
+      -v ~/.docker-"$version"-packages:/usr/local/lib/R/host-site-library \
+      -p 8787:8787 \
+      bioconductor/"$version"_core2
+
+# Note, currently you must enter the following command in the R console to attach the host site library:
+# > .libPaths(c("/usr/local/lib/R/host-site-library", .libPaths()))
