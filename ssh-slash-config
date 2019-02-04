@@ -1,20 +1,14 @@
 Host wallabe4
-HostName 10.128.12.50
-User lwaldron
-ForwardX11 yes
-Compression yes
-
-Host wallabe3
-HostName 104.196.168.117
-User lw391
+HostName ip.add.ress
+User username
 ForwardX11 yes
 Compression yes
 
 Host karle
 Hostname karle.csi.cuny.edu
-User levi.waldron
+User user.name
 ForwardX11 yes
 
 Host chizen
 Hostname chizen.csi.cuny.edu
-User levi.waldron
+User user.name
