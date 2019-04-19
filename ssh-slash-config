@@ -1,5 +1,12 @@
 Host wallabe4
 HostName ip.add.ress
+Port 00000
+User username
+ForwardX11 yes
+Compression yes
+
+Host router
+HostName rout.ip.add
 User username
 ForwardX11 yes
 Compression yes
