@@ -299,7 +299,7 @@ endfunction
 " set backupdir=~/.vim/backup
 " set directory=~/.vim/backup
 
-" let R_path = "/home/${USER}/src/svn/r-release/R/bin"
+" let R_path = "${HOME}/src/svn/r-release/R/bin"
 " let R_args = ['--no-save', '--no-restore']
 
 " let cmdline_app = {}
