@@ -1,5 +1,5 @@
 #!/bin/bash
-# Input 1 = config file name 
+# Input 1 = config file name
 #   - Any of the given repository config files (e.g., bashrc)
 
 # It will NOT overwrite any existing files
@@ -14,7 +14,7 @@ elif [[ ${1} == "version_bump.sh" ]]; then
     if [ ! -f $HOME/.bash_aliases ]; then
         touch $HOME/.bash_aliases
     fi
-    echo "alias bump='/home/$USER/src/version_bump.sh'" >> $HOME/.bash_aliases
+    echo 'alias bump="$HOME/src/version_bump.sh"' >> $HOME/.bash_aliases
 else
     cp -vn ./${1} $HOME/.${1}
 fi
