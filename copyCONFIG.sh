@@ -15,6 +15,9 @@ elif [[ ${1} == "version_bump.sh" ]]; then
         touch $HOME/.bash_aliases
     fi
     echo 'alias bump="$HOME/src/version_bump.sh"' >> $HOME/.bash_aliases
+elif [[ ${1} == "buildr.sh" ]]; then
+    mkdir -p $HOME/src/svn
+    cp -vn ./buildr/${1} $HOME/src/svn/
 else
     cp -vn ./${1} $HOME/.${1}
 fi

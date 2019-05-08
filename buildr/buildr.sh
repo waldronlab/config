@@ -1,12 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 
+echo "Checking for dependencies (svn ccache) ..."
 for name in svn ccache
 do
     [[ $(which $name 2>/dev/null) ]] || \
         { echo -en "\n$name needs to be installed. See 'setup.sh'"; deps=1; }
 done
-    [[ $deps -ne 1 ]] && echo "OK" || \
-        { echo -en "\nInstall dependencies and rerun this script\n"; exit 1; }
+
+[[ $deps -ne 1 ]] && echo "OK" || \
+    { echo -en "\nInstall dependencies and rerun this script\n"; exit 1; }
 
 version=$1
 
@@ -67,7 +69,7 @@ MAKE="make -j8"					\
 #CXX="clang++ -03"				\
 #make svnonly
 
-make 
+make
 
 echo "*** Done -- now run 'make install' in $RINST"
 
