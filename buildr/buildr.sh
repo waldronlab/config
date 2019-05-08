@@ -13,7 +13,7 @@ done
 version=$1
 
 if [ -z "${version// }" ] || [ $version != "release" -a $version != "devel" ]; then
-    echo "Enter either 'devel' or 'release' version"
+    echo "Enter either 'release' or 'devel' version"
     exit 1
 fi
 
@@ -23,21 +23,25 @@ vers_folder='branches/R-3-6-branch/' && [[ $version = "devel" ]] && vers_folder=
 
 fullurl=$baseurl$vers_folder
 
-rfolder="r-$version/R"
+RFOLDER="r-$version/R"
 
 INSTALL_DIR=$HOME/src/svn
 
-if [ ! -d $RSOURCES ]; then
-    mkdir -p $RSOURCES
-fi
+for dir in $RSOURCES $RFOLDER
+do
+    if [ ! -d $dir ]; then
+        mkdir -p $dir
+    fi
+done
 
 cd $RSOURCES
 
-svn co $fullurl $rfolder
+svn co $fullurl $RFOLDER
 
-RINST=$HOME/src/svn/$rfolder
+RINST=$HOME/src/svn/$RFOLDER
 
 cd $RINST
+
 ./tools/rsync-recommended
 
 R_PAPERSIZE=letter				\
