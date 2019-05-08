@@ -19,7 +19,7 @@ fi
 
 baseurl='https://svn.r-project.org/R/'
 
-vers_folder='3-6-branch/' && [[ $version = "devel" ]] && vers_folder='trunk/'
+vers_folder='branches/R-3-6-branch/' && [[ $version = "devel" ]] && vers_folder='trunk/'
 
 fullurl=$baseurl$vers_folder
 
