@@ -27,15 +27,16 @@ RFOLDER="r-$version/R"
 
 INSTALL_DIR=$HOME/src/svn
 
-for dir in $RSOURCES $RFOLDER
+for dir in $INSTALL_DIR $RFOLDER
 do
     if [ ! -d $dir ]; then
         mkdir -p $dir
     fi
 done
 
-cd $RSOURCES
+cd $INSTALL_DIR
 
+echo -e "Getting R version from:\n $fullurl to \n $RFOLDER"
 svn co $fullurl $RFOLDER
 
 RINST=$HOME/src/svn/$RFOLDER
