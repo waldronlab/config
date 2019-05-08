@@ -39,7 +39,7 @@ cd $INSTALL_DIR
 echo -e "Getting R version from:\n $fullurl to \n $RFOLDER"
 svn co $fullurl $RFOLDER
 
-RINST=$HOME/src/svn/$RFOLDER
+RINST=$INSTALL_DIR/$RFOLDER
 
 cd $RINST
 
