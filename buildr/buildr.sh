@@ -46,7 +46,7 @@ done
 cd $INSTALL_DIR
 
 echo -e "Getting R version from:\n $FULLURL to \n $RINST"
-svn co $FULLURL $RFOLDER $RINST
+svn co $FULLURL $RINST
 
 cd $RINST
 
