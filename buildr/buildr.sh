@@ -1,5 +1,13 @@
 #!/bin/bash
 
+version=$1
+
+if [ -z "${version// }" ] || [ $version != "release" ] &&
+    [ $version != "devel" ] && [ $version != "oldrel" ]; then
+    echo "Enter either 'release', 'devel', or 'oldrel' version"
+    exit 1
+fi
+
 echo "Checking for dependencies (svn ccache) ..."
 for name in svn ccache
 do
@@ -10,24 +18,25 @@ done
 [[ $deps -ne 1 ]] && echo "OK" || \
     { echo -en "\nInstall dependencies and rerun this script\n"; exit 1; }
 
-version=$1
-
-if [ -z "${version// }" ] || [ $version != "release" -a $version != "devel" ]; then
-    echo "Enter either 'release' or 'devel' version"
-    exit 1
-fi
 
 baseurl='https://svn.r-project.org/R/'
 
-vers_folder='branches/R-3-6-branch/' && [[ $version = "devel" ]] && vers_folder='trunk/'
+vers_folder='branches/R-3-6-branch/' && [[ $version = "devel" ]] &&
+    vers_folder='trunk/'
 
-fullurl=$baseurl$vers_folder
+if [[ $version = "oldrel" ]]; then
+    vers_folder='branches/R-3-5-branch/'
+fi
+
+FULLURL=$baseurl$vers_folder
 
 RFOLDER="r-$version/R"
 
 INSTALL_DIR=$HOME/src/svn
 
-for dir in $INSTALL_DIR $RFOLDER
+RINST=$INSTALL_DIR/$RFOLDER
+
+for dir in $INSTALL_DIR $RINST
 do
     if [ ! -d $dir ]; then
         mkdir -p $dir
@@ -36,10 +45,8 @@ done
 
 cd $INSTALL_DIR
 
-echo -e "Getting R version from:\n $fullurl to \n $RFOLDER"
-svn co $fullurl $RFOLDER
-
-RINST=$INSTALL_DIR/$RFOLDER
+echo -e "Getting R version from:\n $FULLURL to \n $RINST"
+svn co $FULLURL $RFOLDER $RINST
 
 cd $RINST
 
