@@ -21,11 +21,11 @@ done
 
 baseurl='https://svn.r-project.org/R/'
 
-vers_folder='branches/R-3-6-branch/' && [[ $version = "devel" ]] &&
-    vers_folder='trunk/'
-
 if [[ $version = "oldrel" ]]; then
     vers_folder='branches/R-3-5-branch/'
+else
+    vers_folder='branches/R-3-6-branch/' && [[ $version = "devel" ]] &&
+        vers_folder='trunk/'
 fi
 
 FULLURL=$baseurl$vers_folder
