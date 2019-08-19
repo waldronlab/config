@@ -38,6 +38,8 @@ set paste		" turns on traditional pasting of text
 set number 		" turns line numbering on
 set ruler		" show the cursor position all the time
 colorscheme default " sets color scheme
+" colorscheme jellybeans " sets color scheme
+set laststatus=2
 " default (black bkgr), torte (black bgr), murphy (black bkgr),
 " elflord (black bkgr), blue (blue bkgr), morning (white bkgr), shine (white bkgr) 
 
@@ -81,9 +83,11 @@ colorscheme default " sets color scheme
 " let vimrplugin_screenplugin = 0
 
 " For tmux support
-let g:ScreenImpl = 'Tmux'
-let vimrplugin_screenvsplit = 1 " For vertical tmux split
-let g:R_tmux_split = 1 " R and Tmux on split
+" let g:ScreenImpl = 'Tmux'
+" let R_source='/home/mramos/.vim/bundle/Nvim-R/R/tmux_split.vim'
+" let vimrplugin_screenvsplit = 1 " For vertical tmux split
+" let g:R_tmux_split = 1 " R and Tmux on split
+
 let g:ScreenShellInitialFocus = 'shell' 
 let g:netrw_liststyle=3 " For nerdtree style explorer
 " instruct to use your own .screenrc file
@@ -301,9 +305,12 @@ endfunction
 
 " let R_path = "${HOME}/src/svn/r-release/R/bin"
 " let R_args = ['--no-save', '--no-restore']
+let $R_LIBS_USER="${HOME}/R/bioc-devel"
 
+" For jalvesaq/vimcmdline
 " let cmdline_app = {}
 " let cmdline_app['sh'] = '/bin/bash'
+" let cmdline_in_buffer = 0
 
 if exists('+colorcolumn')
     set colorcolumn=80
@@ -315,7 +322,8 @@ let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " remove trailing whitespace on save (R files)
-autocmd BufWritePre *R :%s/\s\+$//e
-autocmd BufWritePre *.Rmd :%s/\s\+$//e
-autocmd BufWritePre *.sh :%s/\s\+$//e
+autocmd BufWritePre *.R %s/\s\+$//e
+autocmd BufWritePre *.Rmd %s/\s\+$//e
+autocmd BufWritePre *.md %s/\s\+$//e
+autocmd BufWritePre *.sh %s/\s\+$//e
 
