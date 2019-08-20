@@ -86,12 +86,12 @@ set laststatus=2
 " let vimrplugin_applescript = 0
 " let vimrplugin_screenplugin = 0
 
+let usrhome = $HOME
+
 " For tmux support
-let g:ScreenImpl = 'tmux'
-let R_source = "${HOME}/.vim/bundle/Nvim-R/R/tmux_split.vim"
-" let vimrplugin_vsplit = 1 " For vertical tmux split
-let R_tmux_title = 'Nvim-R'
-let R_tmux_split = 1
+" let R_in_buffer = 0
+" let R_term_cmd = 'tilix -a session-add-right -e'
+" let R_tmux_title = 'Nvim-R'
 
 let R_nvimpager = "tabnew"
 let R_rconsole_width = 80
@@ -317,9 +317,10 @@ endfunction
 " set backupdir=~/.vim/backup
 " set directory=~/.vim/backup
 
-" let R_path = "${HOME}/src/svn/r-release/R/bin"
-" let R_args = ['--no-save', '--no-restore']
-let $R_LIBS_USER="${HOME}/R/bioc-devel"
+" let maplocalleader = '/'
+let R_path = usrhome."/src/svn/r-release/R/bin"
+let R_args = ['--no-save', '--no-restore-data']
+let $R_LIBS_USER= usrhome."/R/bioc-devel"
 
 " For jalvesaq/vimcmdline
 " let cmdline_app = {}
