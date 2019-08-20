@@ -13,6 +13,10 @@ if v:progname =~? "evim"
   finish
 endif
 
+if $DISPLAY != ""
+    let R_openpdf = 1
+endif
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
@@ -41,11 +45,11 @@ colorscheme default " sets color scheme
 " colorscheme jellybeans " sets color scheme
 set laststatus=2
 " default (black bkgr), torte (black bgr), murphy (black bkgr),
-" elflord (black bkgr), blue (blue bkgr), morning (white bkgr), shine (white bkgr) 
+" elflord (black bkgr), blue (blue bkgr), morning (white bkgr), shine (white bkgr)
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " sample settings for vim-r-plugin and screen.vim
-" Installation 
+" Installation
 "       - Place plugin file under ~/.vim/
 "       - To activate help, type in vim :helptags ~/.vim/doc
 "       - Place the following vim conf lines in .vimrc
@@ -54,7 +58,7 @@ set laststatus=2
 "       - To initialize vim/R session, start screen/tmux, open some *.R file in vim and then hit F2 key
 "       - Object/omni completion command CTRL-X CTRL-O
 "       - To update object list for omni completion, run :RUpdateObjList
-" My favorite Vim/R window arrangement 
+" My favorite Vim/R window arrangement
 "	tmux attach
 "	Open *.R file in Vim and hit F2 to open R
 "	Go to R pane and create another pane with C-a %
@@ -63,7 +67,7 @@ set laststatus=2
 " Useful tmux commands
 "       tmux new -s <myname>       start new session with a specific name
 "	tmux ls (C-a-s)            list tmux session
-"       tmux attach -t <id>        attach to specific session  
+"       tmux attach -t <id>        attach to specific session
 "       tmux kill-session -t <id>  kill specific session
 " 	C-a-: kill-session         kill a session
 " 	C-a %                      split pane vertically
@@ -83,12 +87,20 @@ set laststatus=2
 " let vimrplugin_screenplugin = 0
 
 " For tmux support
-" let g:ScreenImpl = 'Tmux'
-" let R_source='/home/mramos/.vim/bundle/Nvim-R/R/tmux_split.vim'
-" let vimrplugin_screenvsplit = 1 " For vertical tmux split
-" let g:R_tmux_split = 1 " R and Tmux on split
+let g:ScreenImpl = 'tmux'
+let R_source = "${HOME}/.vim/bundle/Nvim-R/R/tmux_split.vim"
+" let vimrplugin_vsplit = 1 " For vertical tmux split
+let R_tmux_title = 'Nvim-R'
+let R_tmux_split = 1
 
-let g:ScreenShellInitialFocus = 'shell' 
+let R_nvimpager = "tabnew"
+let R_rconsole_width = 80
+let R_min_editor_width = 18
+let R_in_buffer = 1
+" let R_in_buffer = 0
+let R_esc_term = 1
+let R_cmdchunk = 1
+let g:ScreenShellInitialFocus = 'shell'
 let g:netrw_liststyle=3 " For nerdtree style explorer
 " instruct to use your own .screenrc file
 let g:vimrplugin_noscreenrc = 1
@@ -96,13 +108,15 @@ let g:vimrplugin_noscreenrc = 1
 let g:vimrplugin_screenplugin = 1
 " Don't use conque shell if installed
 let vimrplugin_conqueplugin = 0
-" map the letter 'r' to send visually selected lines to R 
+" map the letter 'r' to send visually selected lines to R
 let g:vimrplugin_map_r = 1
 " see R documentation in a Vim buffer
 let vimrplugin_vimpager = "no"
+
 set expandtab
 set shiftwidth=4
 set tabstop=4
+set softtabstop=4
 " allow mouse in all modes
 set mouse=a
 if &term =~ '^screen'
@@ -111,27 +125,27 @@ if &term =~ '^screen'
 endif
 
 " start R with F2 key
-map <F2> <Plug>RStart 
+map <F2> <Plug>RStart
 imap <F2> <Plug>RStart
 vmap <F2> <Plug>RStart
 " send selection to R with space bar
-vmap <Space> <Plug>RDSendSelection 
+vmap <Space> <Plug>RDSendSelection
 " send line to R with space bar
 nmap <Space> <Plug>RDSendLine
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
-" set folding scheme; more on this see: 
+" set folding scheme; more on this see:
 " http://www.dgp.toronto.edu/~mjmcguff/learn/vim/folding.txt
 " http://vim.dindinx.net/orig/usr_28.txt
-"set foldcolumn=0 " if set to > 1 together with 'set number', then the copy&paste of screen will include the line numbers
-"highlight Folded ctermfg=yellow ctermbg=blue  	
+"   set foldcolumn=0 " if set to > 1 together with 'set number',
+" then the copy&paste of screen will include the line numbers
+"   highlight Folded ctermfg=yellow ctermbg=blue
 " highlight  works only when colorscheme is uncommented
-"set foldmethod=indent
-"hi FoldColumn ctermbg=NONE
+"   set foldmethod=indent
+"   hi FoldColumn ctermbg=NONE
 
-" For Latex work: open *.pdf files in evince/xpdf upon opening of *.tex files in vim 
+" For Latex work: open *.pdf files in evince/xpdf upon opening of *.tex files in vim
 " more on this on this page: http://ubuntuforums.org/showthread.php?p=5351607
 au BufRead *.tex silent !xpdf %<.pdf 2>/dev/null &
 au BufRead *.Rnw silent !xpdf %<.pdf 2>/dev/null &
@@ -147,7 +161,7 @@ map Q gq
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
-  set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
+  set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
   set hlsearch
 endif
 
@@ -290,7 +304,7 @@ function Prompt(str, ...)
   execute "let ret = input(\"".str."\", \"".default."\")"
 
   return ret
-endfunction 
+endfunction
 
 " Use pathogen vim plugin
 " execute pathogen#infect()
@@ -322,8 +336,15 @@ let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " remove trailing whitespace on save (R files)
-autocmd BufWritePre *.R %s/\s\+$//e
-autocmd BufWritePre *.Rmd %s/\s\+$//e
-autocmd BufWritePre *.md %s/\s\+$//e
-autocmd BufWritePre *.sh %s/\s\+$//e
+autocmd BufWritePre *.R,*md,*.txt :%s/\s\+$//e
+
+" Emulate Tmux ^az
+function ZoomWindow()
+    let cpos = getpos(".")
+    tabnew %
+    redraw
+    call cursor(cpos[1], cpos[2])
+    normal! zz
+endfunction
+nmap az :call ZoomWindow()<CR>
 
