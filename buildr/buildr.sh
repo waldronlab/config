@@ -75,6 +75,7 @@ MAKE="make -j8"					\
 	--with-blas				    \
 	--with-lapack				\
     --with-readline 		    \
+    --with-tcltk                \
     --with-cairo=yes
 
 #CC="clang -O3"                 \

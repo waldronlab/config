@@ -101,6 +101,7 @@ let R_in_buffer = 1
 let R_esc_term = 1
 let R_cmdchunk = 1
 let g:ScreenShellInitialFocus = 'shell'
+
 let g:netrw_liststyle=3 " For nerdtree style explorer
 " instruct to use your own .screenrc file
 let g:vimrplugin_noscreenrc = 1
@@ -319,7 +320,7 @@ endfunction
 
 " let maplocalleader = '/'
 let R_path = usrhome."/src/svn/r-release/R/bin"
-let R_args = ['--no-save', '--no-restore-data']
+let R_args = ['--no-save', '--no-restore']
 let $R_LIBS_USER= usrhome."/R/bioc-devel"
 
 " For jalvesaq/vimcmdline
