@@ -76,6 +76,7 @@ MAKE="make -j8"					\
 	--with-lapack				\
     --with-readline 		    \
     --with-tcltk                \
+#    --with-darwinssl            \ # MAC only
     --with-cairo=yes
 
 #CC="clang -O3"                 \
