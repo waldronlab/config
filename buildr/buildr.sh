@@ -77,7 +77,8 @@ MAKE="make -j8"					\
     --with-readline 		    \
     --with-tcltk                \
 #    --with-darwinssl            \ # MAC only
-    --with-cairo=yes
+    --with-cairo=yes            \
+#    --enable-memory-profiling
 
 #CC="clang -O3"                 \
 #CXX="clang++ -03"				\

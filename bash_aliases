@@ -15,23 +15,30 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias rm='rm -i'
-alias del=$HOME/src/move_to_trash.sh
+alias del="$HOME/src/move_to_trash.sh"
 
-## set USER to your USERNAME
-
-alias Rrel="R_LIBS_USER=$HOME/R/bioc-release $HOME/src/svn/r-release/R/bin/R --no-save --no-restore-data --no-environ"
-alias Rdev="R_LIBS_USER=$HOME/R/bioc-devel $HOME/src/svn/r-release/R/bin/R --no-save --no-restore-data --no-environ"
+alias R34="R_LIBS_USER=$HOME/R/bioc-oldrel $HOME/src/svn/r-3.4/R/bin/R --no-save --no-restore-data"
+alias Rrel="R_LIBS_USER=$HOME/R/bioc-release $HOME/src/svn/r-release/R/bin/R --no-save --no-restore-data"
+alias Rdev="R_LIBS_USER=$HOME/R/bioc-devel $HOME/src/svn/r-release/R/bin/R --no-save --no-restore-data"
 alias Rold="R_LIBS_USER=$HOME/R/bioc-oldrel $HOME/src/svn/r-oldrel/R/bin/R --no-save --no-restore-data --no-environ"
 alias rstudev="RSTUDIO_WHICH_R=$HOME/src/svn/r-release/R/bin/R R_LIBS_USER=$HOME/R/bioc-devel rstudio --no-save --no-restore-data"
 alias rsturel="RSTUDIO_WHICH_R=$HOME/src/svn/r-release/R/bin/R R_LIBS_USER=$HOME/R/bioc-release rstudio --no-save --no-restore-data"
+alias rdevstudio="RSTUDIO_WHICH_R=$HOME/src/svn/r-devel/R/bin/R R_LIBS_USER=$HOME/R/rdevel rstudio --no-save --no-restore-data"
+
+alias devel="R_LIBS_USER=$HOME/R/r-devel $HOME/src/svn/r-devel/R/bin/R --no-save --no-restore-data"
+alias release="R_LIBS_USER=$HOME/R/r-release $HOME/src/svn/r-release/R/bin/R --no-save --no-restore-data"
+alias oldrel="R_LIBS_USER=$HOME/R/r-oldrel $HOME/src/svn/r-oldrel/R/bin/R --no-save --no-restore-data"
 
 alias buildr='Rdev CMD build --no-build-vignettes'
 alias checkr='time Rdev CMD check --no-build-vignettes'
+alias review="$HOME/reviews/review.sh"
 alias bioccheck='Rdev CMD BiocCheck'
 
 alias locate='locate -i'
 alias sudo='sudo '
 alias tmux="TERM=screen-256color-bce tmux"
+alias fullpath='readlink -f'
+alias bump="$HOME/scripts/version_bump.sh"
 
 if [ -x /usr/bin/subversion ]; then
     alias svnvimdiff="svn diff -r PREV | view -"
