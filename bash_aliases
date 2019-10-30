@@ -19,7 +19,7 @@ alias del="$HOME/src/move_to_trash.sh"
 
 alias R34="R_LIBS_USER=$HOME/R/bioc-oldrel $HOME/src/svn/r-3.4/R/bin/R --no-save --no-restore-data"
 alias Rrel="R_LIBS_USER=$HOME/R/bioc-release $HOME/src/svn/r-release/R/bin/R --no-save --no-restore-data"
-alias Rdev="R_LIBS_USER=$HOME/R/bioc-devel $HOME/src/svn/r-release/R/bin/R --no-save --no-restore-data"
+alias Rdev="R_LIBS_USER=$HOME/R/bioc-devel $HOME/src/svn/r-devel/R/bin/R --no-save --no-restore-data"
 alias Rold="R_LIBS_USER=$HOME/R/bioc-oldrel $HOME/src/svn/r-oldrel/R/bin/R --no-save --no-restore-data --no-environ"
 alias rstudev="RSTUDIO_WHICH_R=$HOME/src/svn/r-release/R/bin/R R_LIBS_USER=$HOME/R/bioc-devel rstudio --no-save --no-restore-data"
 alias rsturel="RSTUDIO_WHICH_R=$HOME/src/svn/r-release/R/bin/R R_LIBS_USER=$HOME/R/bioc-release rstudio --no-save --no-restore-data"
@@ -31,7 +31,7 @@ alias oldrel="R_LIBS_USER=$HOME/R/r-oldrel $HOME/src/svn/r-oldrel/R/bin/R --no-s
 
 alias buildr='Rdev CMD build --no-build-vignettes'
 alias checkr='time Rdev CMD check --no-build-vignettes'
-alias review="$HOME/reviews/review.sh"
+alias review="$HOME/Bioconductor/BiocReviews/review.sh"
 alias bioccheck='Rdev CMD BiocCheck'
 
 alias locate='locate -i'
