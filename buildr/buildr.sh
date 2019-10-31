@@ -72,8 +72,8 @@ MAKE="make -j8"					\
 ./configure 					\
     --prefix=${RINST}           \
     --enable-R-shlib 		    \
-	--with-blas				    \
-	--with-lapack				\
+    --with-blas				    \
+    --with-lapack				\
     --with-readline 		    \
     --with-tcltk                \
     --with-cairo=yes
