@@ -76,8 +76,12 @@ MAKE="make -j8"					\
 	--with-lapack				\
     --with-readline 		    \
     --with-tcltk                \
+    --with-cairo=yes
 #    --with-darwinssl            \ # MAC only
-    --with-cairo=yes            \
+#    --without-x                 \
+#    --with-libpng               \
+#    --with-libtiff              \
+#    --with-jpeglib              \
 #    --enable-memory-profiling
 
 #CC="clang -O3"                 \
