@@ -1,0 +1,31 @@
+bulker:
+  volumes: ['/tmp', '$HOME']
+  envvars: ['DISPLAY']
+  registry_url: http://hub.bulker.io/
+  default_crate_folder: ${HOME}/bulker_crates
+  singularity_image_folder: ${HOME}/simages
+  container_engine: docker
+  default_namespace: bulker
+  executable_template: templates/docker_executable.jinja2
+  shell_template: templates/docker_shell.jinja2
+  build_template: templates/docker_build.jinja2
+  crates:
+    bulker:
+      demo:
+        default: /Users/lw391/bulker_crates/bulker/demo/default
+    bioconductor:
+      bioconductor_full:
+        default:
+          docker_args: --volume=${HOME}/.local/lib/R:/usr/local/lib/R/host-site-library
+        devel:
+          docker_args: --volume=${HOME}/.local/lib/Rdev:/usr/local/lib/R/host-site-library
+      levi:
+        default: /Users/lw391/bulker_crates/bulker/levi/default
+    waldronlab:
+      bioconductor:
+        default: /Users/lwaldron/bulker_crates/waldronlab/bioconductor/default
+      levi:
+        default: /Users/lwaldron/bulker_crates/waldronlab/levi/default
+    databio:
+      nsheff:
+        default: /Users/lwaldron/bulker_crates/databio/nsheff/default
