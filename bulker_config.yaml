@@ -22,8 +22,8 @@ bulker:
       nsheff:
         default: ${HOME}/bulker_crates/databio/nsheff/default
   tool_args:
-    bioconductor:
-      bioconductor_full:
+    waldronlab:
+      bioconductor:
         default:
           docker_args: --volume=${HOME}/R/bioc-release:/usr/local/lib/R/host-site-library -e PASSWORD=rstudiopassword -p 8787:8787 -v ${HOME}:/home/rstudio
         devel:
