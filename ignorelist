@@ -7,7 +7,7 @@
 #
 # #Usage:
 #    USER=<homedir username here>
-#    rsync -aP --exclude-from=rsync-homedir-excludes.txt /home/$USER/ /media/$USER/linuxbackup/home/$USER/
+#    rsync -aP --exclude-from=rsync-homedir-excludes.txt $HOME /media/$USER/linuxbackup/home/$USER/
 
 
 ###############################################
@@ -73,7 +73,9 @@
 
 # Bioconductor
 .ExperimentHub
-GitHub/MultiAssayExperiment/.wercker
+github
+bioconductor
+GitHub
 
 
 # RStudio
