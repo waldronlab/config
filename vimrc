@@ -314,14 +314,17 @@ endfunction
 " au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
 " au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
-" Use this as your backup directory for swp files
+" Use this as your backup directory for swp files (create first)
 " set backupdir=~/.vim/backup
 " set directory=~/.vim/backup
 
 " let maplocalleader = '/'
-let R_path = usrhome."/src/svn/r-release/R/bin"
 let R_args = ['--no-save', '--no-restore']
-let $R_LIBS_USER= usrhome."/R/bioc-devel"
+
+let R_path = usrhome."/src/svn/r-release/R/bin"
+let $R_LIBS_USER= usrhome."/R/bioc-release"
+" let R_path = usrhome."/src/svn/r-devel/R/bin"
+" let $R_LIBS_USER= usrhome."/R/bioc-devel"
 
 " For jalvesaq/vimcmdline
 " let cmdline_app = {}
