@@ -13,22 +13,17 @@ bulker:
   executable_template: templates/docker_executable.jinja2
   shell_template: templates/docker_shell.jinja2
   build_template: templates/docker_build.jinja2
- crates:
-   bulker:
-     demo:
-       default: ${HOME}/bulker_crates/bulker/demo/default
-   waldronlab:
-     bioconductor:
-       default: ${HOME}/bulker_crates/waldronlab/bioconductor/default
-     levi:
-       default: ${HOME}/bulker_crates/waldronlab/levi/default
-   databio:
-     nsheff:
-       default: ${HOME}/bulker_crates/databio/nsheff/default
- tool_args:
-   waldronlab:
-     bioconductor:
-       default:
-         docker_args: --volume=${HOME}/R/bioc-release:/usr/local/lib/R/host-site-library -e PASSWORD=rstudiopassword -p 8787:8787 -v ${HOME}:/home/rstudio
-       devel:
-         docker_args: --volume=${HOME}/R/bioc-devel:/usr/local/lib/R/host-site-library -e PASSWORD=rstudiopassword -p 8788:8787 -v ${HOME}:/home/rstudio
+  crates:
+    waldronlab:
+      bioconductor:
+        default: ${HOME}/bulker_crates/waldronlab/bioconductor/default
+      levi:
+        default: ${HOME}/bulker_crates/waldronlab/levi/default
+  tool_args:
+    waldronlab:
+      bioconductor:
+        default:
+          docker_args: --volume=${HOME}/R/bioc-release:/usr/local/lib/R/host-site-library -e PASSWORD=rstudiopassword -p 8787:8787 -v ${HOME}:/home/rstudio
+        devel:
+          docker_args: --volume=${HOME}/R/bioc-devel:/usr/local/lib/R/host-site-library -e PASSWORD=rstudiopassword -p 8788:8787 -v ${HOME}:/home/rstudio
+
