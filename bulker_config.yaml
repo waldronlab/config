@@ -1,7 +1,11 @@
 bulker:
   volumes: ['$HOME']
-  envvars: ['DISPLAY', 'HOME']
+  envvars: ['DISPLAY']
   registry_url: http://hub.bulker.io/
+  shell_path: ${SHELL}
+  shell_rc: ${HOME}/.bashrc
+  rcfile: templates/start.sh
+  rcfile_strict: templates/start_strict.sh
   default_crate_folder: ${HOME}/bulker_crates
   singularity_image_folder: ${HOME}/simages
   container_engine: docker
@@ -10,17 +14,11 @@ bulker:
   shell_template: templates/docker_shell.jinja2
   build_template: templates/docker_build.jinja2
   crates:
-    bulker:
-      demo:
-        default: ${HOME}/bulker_crates/bulker/demo/default
     waldronlab:
       bioconductor:
         default: ${HOME}/bulker_crates/waldronlab/bioconductor/default
       levi:
         default: ${HOME}/bulker_crates/waldronlab/levi/default
-    databio:
-      nsheff:
-        default: ${HOME}/bulker_crates/databio/nsheff/default
   tool_args:
     waldronlab:
       bioconductor:
@@ -28,3 +26,4 @@ bulker:
           docker_args: --volume=${HOME}/R/bioc-release:/usr/local/lib/R/host-site-library -e PASSWORD=rstudiopassword -p 8787:8787 -v ${HOME}:/home/rstudio
         devel:
           docker_args: --volume=${HOME}/R/bioc-devel:/usr/local/lib/R/host-site-library -e PASSWORD=rstudiopassword -p 8788:8787 -v ${HOME}:/home/rstudio
+
