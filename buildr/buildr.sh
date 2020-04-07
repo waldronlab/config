@@ -68,7 +68,6 @@ CXX="ccache g++"				\
 CXXFLAGS="-ggdb -pipe -Wall -pedantic"  \
 FC="ccache gfortran"	 	    \
 F77="ccache gfortran"		    \
-MAKE="make -j8"					\
 ./configure 					\
     --prefix=${RINST}           \
     --enable-R-shlib 		    \
