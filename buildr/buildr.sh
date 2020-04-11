@@ -24,7 +24,7 @@ baseurl='https://svn.r-project.org/R/'
 if [[ $version = "oldrel" ]]; then
     vers_folder='branches/R-3-5-branch/'
 else
-    vers_folder='branches/R-3-6-branch/' && [[ $version = "devel" ]] &&
+    vers_folder='branches/R-4-0-branch/' && [[ $version = "devel" ]] &&
         vers_folder='trunk/'
 fi
 
@@ -68,7 +68,6 @@ CXX="ccache g++"				\
 CXXFLAGS="-ggdb -pipe -Wall -pedantic"  \
 FC="ccache gfortran"	 	    \
 F77="ccache gfortran"		    \
-MAKE="make -j8"					\
 ./configure 					\
     --prefix=${RINST}           \
     --enable-R-shlib 		    \
