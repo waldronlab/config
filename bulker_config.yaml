@@ -26,4 +26,6 @@ bulker:
           docker_args: --volume=${HOME}/R/bioc-release:/usr/local/lib/R/host-site-library -e DISABLE_AUTH=true -p 8787:8787 -v ${HOME}:/home/rstudio
         devel:
           docker_args: --volume=${HOME}/R/bioc-devel:/usr/local/lib/R/host-site-library -e DISABLE_AUTH=true -p 8788:8787 -v ${HOME}:/home/rstudio
-
+      curatedmetagenomics:
+        default:
+          docker_args: --volume=${HOME}/biobakery.db/metaphlan:/usr/local/miniconda3/lib/python3.7/site-packages/metaphlan/metaphlan_databases --volume=${HOME}/biobakery.db/humann:/usr/local/humann_databases
