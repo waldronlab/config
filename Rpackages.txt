@@ -17,6 +17,7 @@ BiocParallel
 BSgenome.Hsapiens.UCSC.hg19.masked
 Category
 caTools
+cBioPortalData
 changepoint
 circlize
 cluster
@@ -32,7 +33,6 @@ curatedTCGAData
 dbplyr
 DelayedArray
 DelayedMatrixStats
-DESeq
 DESeq2
 devtools
 DiagrammeR
@@ -99,7 +99,7 @@ regioneR
 registry
 remotes
 ReportingTools
-reshape
+reshape2
 RISmed
 rjson
 RJSONIO
@@ -112,11 +112,13 @@ scone
 Seurat
 shape
 SingleCellExperiment
+SingleCellMultiModal
 slam
 slingshot
 SparseM
 SPIA
 SummarizedExperiment
+TCGAutils
 tidyverse
 topGO
 TxDb.Hsapiens.UCSC.hg19.knownGene
@@ -127,4 +129,3 @@ wordcloud
 xml2
 zinbwave
 zoo
-seandavi/SRAdbV2
