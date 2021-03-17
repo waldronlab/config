@@ -93,6 +93,7 @@ let usrhome = $HOME
 " let R_term_cmd = 'tilix -a session-add-right -e'
 " let R_tmux_title = 'Nvim-R'
 
+let R_commented_lines = 1
 let R_nvimpager = "tabnew"
 let R_rconsole_width = 80
 let R_min_editor_width = 18
@@ -308,21 +309,22 @@ function Prompt(str, ...)
 endfunction
 
 " Use pathogen vim plugin
-" execute pathogen#infect()
+execute pathogen#infect()
 
 " Remap capslock key to escape inside vim
-" au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-" au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
+au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
 
 " Use this as your backup directory for swp files (create first)
-" set backupdir=~/.vim/backup
-" set directory=~/.vim/backup
+set backupdir=~/.vim/backup
+set directory=~/.vim/backup
 
-" let maplocalleader = '/'
+let maplocalleader = '/'
 let R_args = ['--no-save', '--no-restore']
 
-let R_path = usrhome."/src/svn/r-release/R/bin"
-let $R_LIBS_USER= usrhome."/R/bioc-release"
+" set RLOC outside of vimrc
+let R_path=$RLOC
+let R_LIBS_USER=$R_LIBS_USER
 " let R_path = usrhome."/src/svn/r-devel/R/bin"
 " let $R_LIBS_USER= usrhome."/R/bioc-devel"
 

@@ -89,8 +89,8 @@ F77="ccache gfortran"		    \
 
 make
 
-echo "*** Done -- now run 'make install' in $RINST"
-
 cd $RINST
 
 make install
+
+echo "*** Done ***"
