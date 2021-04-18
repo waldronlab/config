@@ -37,6 +37,10 @@ alias checkr='time Rrel CMD check --no-build-vignettes'
 alias checkd='time Rdev CMD check --no-build-vignettes'
 alias bioccheck='Rdev CMD BiocCheck'
 
+alias vimo='R_LIBS_USER=$HOME/R/bioc-oldrel/  RLOC=$HOME/src/svn/r-oldrel/R/bin  vim'
+alias vimr='R_LIBS_USER=$HOME/R/bioc-release/ RLOC=$HOME/src/svn/r-release/R/bin vim'
+alias vimd='R_LIBS_USER=$HOME/R/bioc-devel/   RLOC=$HOME/src/svn/r-devel/R/bin   vim'
+
 alias locate='locate -i'
 alias sudo='sudo '
 alias tmux="TERM=screen-256color-bce tmux"
