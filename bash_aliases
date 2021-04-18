@@ -31,8 +31,10 @@ alias devel="R_LIBS_USER=$HOME/R/r-devel $HOME/src/svn/r-devel/R/bin/R --no-save
 
 alias review="$HOME/Bioconductor/BiocReviews/review.sh"
 
-alias buildr='Rdev CMD build --no-build-vignettes'
-alias checkr='time Rdev CMD check --no-build-vignettes'
+alias buildr='Rrel CMD build --no-build-vignettes'
+alias buildd='Rdev CMD build --no-build-vignettes'
+alias checkr='time Rrel CMD check --no-build-vignettes'
+alias checkd='time Rdev CMD check --no-build-vignettes'
 alias bioccheck='Rdev CMD BiocCheck'
 
 alias locate='locate -i'
