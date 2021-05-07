@@ -63,3 +63,11 @@ parse_git_branch() {
 }
 export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 
+## https://unix.stackexchange.com/a/217223
+## uncomment for single auth with passphrase at login
+# if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+#   eval `ssh-agent`
+#   ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+# fi
+# export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+# ssh-add -l > /dev/null || ssh-add
