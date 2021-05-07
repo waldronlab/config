@@ -75,8 +75,12 @@
 .ExperimentHub
 .AnnotationHub
 github
+gh
 bioconductor
+bioc
 GitHub
+miniconda
+conda
 
 
 # RStudio
@@ -281,6 +285,8 @@ Thumbs.db
 .local/share/akonadi
 
 #Other apps:
+# docker
+.docker*
 
 # Pidgin
 .pulse/icons
