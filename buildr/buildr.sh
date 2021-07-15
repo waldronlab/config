@@ -22,9 +22,9 @@ done
 baseurl='https://svn.r-project.org/R/'
 
 if [[ $version = "oldrel" ]]; then
-    vers_folder='branches/R-3-6-branch/'
+    vers_folder='branches/R-4-0-branch/'
 else
-    vers_folder='branches/R-4-0-branch/' && [[ $version = "devel" ]] &&
+    vers_folder='branches/R-4-1-branch/' && [[ $version = "devel" ]] &&
         vers_folder='trunk/'
 fi
 
