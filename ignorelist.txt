@@ -6,8 +6,7 @@
 # Version: 2018-05-18
 #
 # #Usage:
-#    USER=<homedir username here>
-#    rsync -aP --exclude-from=rsync-homedir-excludes.txt $HOME /media/$USER/linuxbackup/home/$USER/
+#    rsync -aP --exclude-from=$HOME/gh/config/ignorelist.txt $HOME /media/$USER/LinuxBackup/home/$USER/
 
 
 ###############################################
@@ -68,6 +67,9 @@
 # Cached info about audio CDs:
 .cddb
 
+# minikube cache
+.minikube
+
 # Cached packages lists:
 .aptitude
 
@@ -82,6 +84,11 @@ GitHub
 miniconda
 conda
 
+# data folders
+data
+
+# snap folder
+snap
 
 # RStudio
 .rstudio-desktop
@@ -271,9 +278,20 @@ Thumbs.db
 .config/chromium/Default/Application Cache
 .config/chromium/Default/History Index *
 
+.config/Microsoft
+
 #Slack:
 
 .config/Slack
+
+# BlueJeans
+.config/bluejeans*
+
+# Teams
+.config/teams
+
+# Zoom
+Documents/Zoom
 
 #Local repositories (added by errantlinguist on 2015-04-13):
 .gradle/caches
@@ -285,8 +303,10 @@ Thumbs.db
 .local/share/akonadi
 
 #Other apps:
-# docker
+docker
+dockerhome
 .docker*
+.rbenv
 
 # Pidgin
 .pulse/icons
@@ -309,3 +329,9 @@ nohup.out
 # ccache, remove cache but keep config
 .ccache/?
 .ccache/tmp
+
+# svn
+src/svn
+
+# workshops
+workshops
