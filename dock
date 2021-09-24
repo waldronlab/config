@@ -1,0 +1,26 @@
+#!/bin/bash
+version=$1
+container=$2
+
+if [ $version == "oldrel" ]; then
+    dock_ver="RELEASE_3_12"
+elif [ $version == "release" ]; then
+    dock_ver="RELEASE_3_13"
+else
+    dock_ver=$version
+fi
+
+if [ -z "${container// }" ]; then
+    container="bioconductor/bioconductor_docker:${dock_ver}"
+    echo "Using container: ${container}"
+elif [ $container == "build" ]; then
+    res=$(docker images --format="{{.Repository}} {{.ID}}" | grep "bioconductor_build_docker") 
+    container=$(echo $res | cut -d" " -f1)
+    echo "Using container: ${container}"
+    container=$(echo $res | cut -d" " -f2)
+fi
+
+
+docker run \
+-v /media/mr148/1D24A0EA4286043C1/docker-$version:/usr/local/lib/R/host-site-library \
+-v $HOME/dockerhome:/home/rstudio -e PASSWORD=bioc -p 8787:8787 $container
