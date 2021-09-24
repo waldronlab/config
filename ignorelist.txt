@@ -6,7 +6,7 @@
 # Version: 2018-05-18
 #
 # #Usage:
-#    rsync -aP --exclude-from=$HOME/gh/config/ignorelist.txt $HOME /media/$USER/LinuxBackup/home/$USER/
+#    rsync -aP --exclude-from=$HOME/gh/config/ignorelist.txt $HOME /media/$USER/LinuxBackup/home/
 
 
 ###############################################
@@ -207,8 +207,8 @@ Thumbs.db
 # cached plugin data, recreated
 .mozilla/seamonkey/*/pluginreg.dat
 
-# Thunderbird Cache in your profile folder
-.thunderbird/*/Cache
+# Thunderbird Cache
+.thunderbird
 
 #Opera-specific (related question on Superuser.com: Is documentation available on files and directories in the Opera profile folder?):
 
@@ -266,10 +266,11 @@ Thumbs.db
 
 #Google Chrome:
 
-.config/google-chrome/Default/Local Storage
-.config/google-chrome/Default/Session Storage
-.config/google-chrome/Default/Application Cache
-.config/google-chrome/Default/History Index *
+.config/google-chrome
+
+## Opera
+
+.config/opera
 
 #Chromium:
 
@@ -308,6 +309,9 @@ dockerhome
 .docker*
 .rbenv
 
+# Programs
+go
+
 # Pidgin
 .pulse/icons
 # Cached applets
@@ -330,8 +334,8 @@ nohup.out
 .ccache/?
 .ccache/tmp
 
-# svn
-src/svn
+# src
+src/*/
 
 # workshops
 workshops
