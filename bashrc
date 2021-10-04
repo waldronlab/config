@@ -55,7 +55,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export GITHUB=$HOME/GitHub
+export GITHUB=$HOME/gh
 
 # report branch location
 parse_git_branch() {
@@ -71,3 +71,8 @@ export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 # fi
 # export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 # ssh-add -l > /dev/null || ssh-add
+
+bind "TAB:menu-complete"
+bind "set show-all-if-ambiguous on"
+bind "set menu-complete-display-prefix on"
+
