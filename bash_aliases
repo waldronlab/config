@@ -63,3 +63,4 @@ if [ -f $HOME/src/google-cloud-sdk/completion.bash.inc ]; then
   source $HOME/src/google-cloud-sdk/completion.bash.inc
 fi
 
+alias gitall="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;"
