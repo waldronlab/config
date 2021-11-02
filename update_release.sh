@@ -15,11 +15,14 @@
 #' usage:
 #' cd PACKAGE
 #' ./update_release.sh RELEASE_3_14
+#' ./update_release.sh RELEASE_3_14 main
+
 RELEASE=$1
+DEFAULT=${2:-master}
 
 git fetch --all
-git pull upstream master
-git push origin master
+git pull upstream $DEFAULT
+git push origin $DEFAULT
 git checkout -b $RELEASE upstream/$RELEASE
 git push origin $RELEASE
-git checkout master
+git checkout $DEFAULT
