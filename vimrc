@@ -89,7 +89,7 @@ set laststatus=2
 let usrhome = $HOME
 
 " For tmux support
-" let R_external_term = 0
+" let R_external_term = 1
 " let R_term_cmd = 'tilix -a session-add-right -e'
 " let R_tmux_title = 'Nvim-R'
 
@@ -97,8 +97,7 @@ let R_commented_lines = 1
 let R_nvimpager = "tabnew"
 let R_rconsole_width = 80
 let R_min_editor_width = 18
-let R_external_term = 1
-" let R_external_term = 0
+let R_external_term = 0
 let R_esc_term = 1
 let R_cmdchunk = 1
 let g:ScreenShellInitialFocus = 'shell'
