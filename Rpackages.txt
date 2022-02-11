@@ -46,6 +46,7 @@ foreach
 gam
 genefilter
 geneplotter
+GenomicSuperSignatures
 GEOquery
 GetoptLong
 GGally
@@ -60,6 +61,7 @@ gridBase
 GSEABenchmarkeR
 HDF5Array
 hgu95av2.db
+HGNChelper
 HMP16SData
 hms
 iterators
@@ -94,6 +96,7 @@ RaggedExperiment
 rappdirs
 RColorBrewer
 RcppArmadillo
+RcppGSL
 readr
 regioneR
 registry
