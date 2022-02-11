@@ -15,6 +15,7 @@ BiocFileCache
 biocGraph
 BiocParallel
 BSgenome.Hsapiens.UCSC.hg19.masked
+bugsigdbr
 Category
 caTools
 cBioPortalData
@@ -22,6 +23,7 @@ changepoint
 circlize
 cluster
 clusterExperiment
+CNVRanger
 codetools
 cometExactTest
 ComplexHeatmap
@@ -38,6 +40,7 @@ devtools
 DiagrammeR
 DiagrammeRsvg
 doParallel
+doppelgangR
 dplyr
 EDASeq
 edgeR
@@ -68,6 +71,7 @@ iterators
 KEGGandMetacoreDzPathwaysGEO
 KEGGdzPathwaysGEO
 KEGGgraph
+lefser
 limma
 locfit
 maftools
