@@ -79,6 +79,7 @@ magrittr
 Matrix
 mclust
 memuse
+mgsub
 MultiAssayExperiment
 multipanelfigure
 NMF
@@ -125,7 +126,9 @@ slingshot
 SparseM
 SPIA
 SummarizedExperiment
+taxize
 TCGAutils
+tidytext
 tidyverse
 topGO
 TxDb.Hsapiens.UCSC.hg19.knownGene
