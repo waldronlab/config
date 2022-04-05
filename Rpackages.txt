@@ -15,6 +15,7 @@ BiocFileCache
 biocGraph
 BiocParallel
 BSgenome.Hsapiens.UCSC.hg19.masked
+bugsigdbr
 Category
 caTools
 cBioPortalData
@@ -22,6 +23,7 @@ changepoint
 circlize
 cluster
 clusterExperiment
+CNVRanger
 codetools
 cometExactTest
 ComplexHeatmap
@@ -38,6 +40,7 @@ devtools
 DiagrammeR
 DiagrammeRsvg
 doParallel
+doppelgangR
 dplyr
 EDASeq
 edgeR
@@ -46,6 +49,7 @@ foreach
 gam
 genefilter
 geneplotter
+GenomicSuperSignatures
 GEOquery
 GetoptLong
 GGally
@@ -60,12 +64,14 @@ gridBase
 GSEABenchmarkeR
 HDF5Array
 hgu95av2.db
+HGNChelper
 HMP16SData
 hms
 iterators
 KEGGandMetacoreDzPathwaysGEO
 KEGGdzPathwaysGEO
 KEGGgraph
+lefser
 limma
 locfit
 maftools
@@ -73,6 +79,7 @@ magrittr
 Matrix
 mclust
 memuse
+mgsub
 MultiAssayExperiment
 multipanelfigure
 NMF
@@ -94,6 +101,7 @@ RaggedExperiment
 rappdirs
 RColorBrewer
 RcppArmadillo
+RcppGSL
 readr
 regioneR
 registry
@@ -118,7 +126,9 @@ slingshot
 SparseM
 SPIA
 SummarizedExperiment
+taxize
 TCGAutils
+tidytext
 tidyverse
 topGO
 TxDb.Hsapiens.UCSC.hg19.knownGene
