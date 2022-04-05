@@ -1,10 +1,11 @@
 #!/bin/bash
 
+# version must be the R-X-Y-branch version number e.g, '4-1' or 'devel'
 version=$1
 
-if [ -z "${version// }" ] || [ $version != "release" ] &&
-    [ $version != "devel" ] && [ $version != "oldrel" ]; then
-    echo "Enter either 'release', 'devel', or 'oldrel' version"
+if [ -z "${version// }" ] || [ $version = "release" ] &&
+    [ $version = "oldrel" ]; then
+    echo "Enter numeric version, e.g., '4-1', '4-2', or 'devel'"
     exit 1
 fi
 
@@ -18,14 +19,12 @@ done
 [[ $deps -ne 1 ]] && echo "OK" || \
     { echo -en "\nInstall dependencies and rerun this script\n"; exit 1; }
 
-
 baseurl='https://svn.r-project.org/R/'
 
-if [[ $version = "oldrel" ]]; then
-    vers_folder='branches/R-4-0-branch/'
+if [[ $version = "devel" ]]; then
+    vers_folder='trunk/'
 else
-    vers_folder='branches/R-4-1-branch/' && [[ $version = "devel" ]] &&
-        vers_folder='trunk/'
+    vers_folder="branches/R-${version}-branch/"
 fi
 
 FULLURL=$baseurl$vers_folder
