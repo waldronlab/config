@@ -2,11 +2,20 @@
 
 # version must be the R-X-Y-branch version number e.g, '4-1' or 'devel'
 version=$1
+# revision is the svn checkout revision number e.g., 12345
+revision=$2
 
 if [ -z "${version// }" ] || [ $version = "release" ] ||
     [ $version = "oldrel" ]; then
     echo "Enter numeric version, e.g., '4-1', '4-2', or 'devel'"
     exit 1
+fi
+
+if [ ! -z "${revision// }" ]; then
+    echo "revision is set to ${revision}"
+    ending="/@${revision}"
+else
+    ending="/"
 fi
 
 echo "Checking for dependencies (svn ccache) ..."
@@ -22,9 +31,9 @@ done
 baseurl='https://svn.r-project.org/R/'
 
 if [ $version = "devel" ]; then
-    vers_folder='trunk/'
+    vers_folder="trunk${ending}"
 else
-    vers_folder="branches/R-${version}-branch/"
+    vers_folder="branches/R-${version}-branch${ending}"
 fi
 
 FULLURL=$baseurl$vers_folder
@@ -86,10 +95,6 @@ F77="ccache gfortran"		    \
 #CXX="clang++ -03"				\
 #make svnonly
 
-make
-
-cd $RINST
-
-make install
+make && make install
 
 echo "*** Done ***"
