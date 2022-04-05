@@ -3,7 +3,7 @@
 # version must be the R-X-Y-branch version number e.g, '4-1' or 'devel'
 version=$1
 
-if [ -z "${version// }" ] || [ $version = "release" ] &&
+if [ -z "${version// }" ] || [ $version = "release" ] ||
     [ $version = "oldrel" ]; then
     echo "Enter numeric version, e.g., '4-1', '4-2', or 'devel'"
     exit 1
@@ -21,7 +21,7 @@ done
 
 baseurl='https://svn.r-project.org/R/'
 
-if [[ $version = "devel" ]]; then
+if [ $version = "devel" ]; then
     vers_folder='trunk/'
 else
     vers_folder="branches/R-${version}-branch/"
