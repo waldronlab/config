@@ -21,6 +21,7 @@ elif [ $container == "build" ]; then
 fi
 
 
-docker run \
--v /media/mr148/1D24A0EA4286043C1/docker-$version:/usr/local/lib/R/host-site-library \
--v $HOME/dockerhome:/home/rstudio -e PASSWORD=bioc -p 8787:8787 $container
+docker run -e PASSWORD=bioc \
+-v $HOME/R/docker-$version:/usr/local/lib/R/host-site-library \
+-v $HOME/dockerhome:/home/rstudio -p 8787:8787 $container
+
