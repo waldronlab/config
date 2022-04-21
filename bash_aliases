@@ -19,8 +19,8 @@ alias del="$HOME/src/move_to_trash.sh"
 
 ## Modify the R version folders (in src/svn) after every release
 ## Note. These folders correspond to ./buildr.sh
-alias Rold="R_LIBS_USER=$HOME/R/bioc-oldrel $HOME/src/svn/r-4-1/R/bin/R --no-save --no-restore-data --no-environ"
-alias Rrel="R_LIBS_USER=$HOME/R/bioc-release $HOME/src/svn/r-4-2/R/bin/R --no-save --no-restore-data --no-environ"
+alias Rold="R_LIBS_USER=$HOME/R/bioc-oldrel $HOME/src/svn/r-4-0/R/bin/R --no-save --no-restore-data --no-environ"
+alias Rrel="R_LIBS_USER=$HOME/R/bioc-release $HOME/src/svn/r-4-1/R/bin/R --no-save --no-restore-data --no-environ"
 alias Rdev="R_LIBS_USER=$HOME/R/bioc-devel $HOME/src/svn/r-4-2/R/bin/R --no-save --no-restore-data"
 
 alias rstudev="RSTUDIO_WHICH_R=$HOME/src/svn/r-devel/R/bin/R R_LIBS_USER=$HOME/R/bioc-devel rstudio --no-save --no-restore-data --no-environ"
