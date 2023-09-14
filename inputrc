@@ -7,5 +7,6 @@ set vi-ins-mode-string \1\e[5 q\2
 set vi-cmd-mode-string \1\e[1 q\2
 
 set keymap vi-insert
+TAB: menu-complete
 RETURN: "\e\n"
 
