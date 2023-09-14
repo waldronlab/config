@@ -66,4 +66,5 @@ if [ -f $HOME/src/google-cloud-sdk/completion.bash.inc ]; then
 fi
 
 alias gitall="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;"
+alias git.addnw="git diff -U0 -w --no-color --src-prefix=a/ --dst-prefix=b/ | git apply --cached --ignore-whitespace --unidiff-zero -"
 alias cleanbc='find . -type f -maxdepth 1 -name "*.tar.gz" -exec rm {} \; && find . -type d -maxdepth 1 -name "*.Rcheck" -exec rm -rf {} \; && find . -type d -maxdepth 1 -name "*.BiocCheck" -exec rm -rf {} \;'
