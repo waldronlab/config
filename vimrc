@@ -93,7 +93,6 @@ let usrhome = $HOME
 " let R_term_cmd = 'tilix -a session-add-right -e'
 " let R_tmux_title = 'Nvim-R'
 
-let R_commented_lines = 1
 let R_nvimpager = "tabnew"
 let R_rconsole_width = 80
 let R_min_editor_width = 18
