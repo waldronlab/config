@@ -36,7 +36,7 @@ alias buildr='Rrel CMD build --no-build-vignettes'
 alias buildd='Rdev CMD build --no-build-vignettes'
 alias checkr='time Rrel CMD check --no-vignettes'
 alias checkd='time Rdev CMD check --no-vignettes'
-alias bioccheck='Rdev CMD BiocCheck'
+alias bioccheck='Rdev -e "BiocCheck::BiocCheck()"'
 
 ## For vim users who need different versions of R
 ## alias vimo='R_LIBS_USER=$HOME/R/bioc-oldrel/  RLOC=$HOME/src/svn/r-oldrel/R/bin  vim'
