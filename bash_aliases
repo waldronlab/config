@@ -32,10 +32,15 @@ alias rsturel="RSTUDIO_WHICH_R=$HOME/src/svn/r-release/R/bin/R R_LIBS_USER=$HOME
 ## alias r42="R_LIBS_USER=$HOME/R/r-4-2 $HOME/src/svn/r-4-2/R/bin/R --no-save --no-restore-data --no-environ"
 ## alias devel="R_LIBS_USER=$HOME/R/r-devel $HOME/src/svn/r-devel/R/bin/R --no-save --no-restore-data --no-environ"
 
+alias installr='Rrel CMD INSTALL --no-test-load --no-staged-install'
+alias installd='Rdev CMD INSTALL --no-test-load --no-staged-install'
+
 alias buildr='Rrel CMD build --no-build-vignettes'
 alias buildd='Rdev CMD build --no-build-vignettes'
-alias checkr='time Rrel CMD check --no-vignettes'
-alias checkd='time Rdev CMD check --no-vignettes'
+
+alias checkr='time Rrel CMD check --no-vignettes --no-manual'
+alias checkd='time Rdev CMD check --no-vignettes --no-manual'
+
 alias bioccheck='Rdev -e "BiocCheck::BiocCheck()"'
 
 ## For vim users who need different versions of R
@@ -67,4 +72,5 @@ fi
 
 alias gitall="find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;"
 alias git.addnw="git diff -U0 -w --no-color --src-prefix=a/ --dst-prefix=b/ | git apply --cached --ignore-whitespace --unidiff-zero -"
-alias cleanbc='find . -maxdepth 1 -type f -name "*.tar.gz" -exec rm {} \; && find . -maxdepth 1 -type d -name "*.Rcheck" -exec rm -rf {} \; && find . -maxdepth 1 -type d -name "*.BiocCheck" -exec rm -rf {} \;'
+alias scrub='find . -maxdepth 1 -type f -name "*.tar.gz" -exec rm {} \; && find . -maxdepth 1 -type d -name "*.Rcheck" -exec rm -rf {} \; && find . -maxdepth 1 -type d -name "*.BiocCheck" -exec rm -rf {} \;'
+
