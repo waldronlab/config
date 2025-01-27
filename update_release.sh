@@ -15,10 +15,9 @@
 #' usage:
 #' cd PACKAGE
 #' ./update_release.sh RELEASE_3_14
-#' ./update_release.sh RELEASE_3_14 main
 
 RELEASE=$1
-DEFAULT=${2:-master}
+DEFAULT=${2:-devel}
 
 git fetch --all
 git pull upstream $DEFAULT
