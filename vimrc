@@ -38,7 +38,8 @@ set incsearch		" do incremental searching
 set nowrap		" turns off text wrapping
 set nospell 		" turns on spell check for all files
 autocmd BufNewFile,BufRead NEWS,NEWS.md,README.md set spell "turns on spell check only for specified files
-set paste		" turns on traditional pasting of text
+" NOTE. traditional paste mode interferes with copilot
+" set paste		" turns on traditional pasting of text
 set number 		" turns line numbering on
 set ruler		" show the cursor position all the time
 colorscheme default " sets color scheme
