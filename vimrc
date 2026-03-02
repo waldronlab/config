@@ -26,7 +26,7 @@ set backspace=indent,eol,start
 
 set t_Co=256
 
-"set autoindent		" always set autoindenting on
+set autoindent		" always set autoindenting on
 if has("vms")
   set nobackup		" do not keep a backup file, use versions instead
 else
@@ -101,6 +101,8 @@ let R_external_term = 0
 let R_esc_term = 1
 let R_cmdchunk = 1
 let g:ScreenShellInitialFocus = 'shell'
+let R_set_omnifunc = ["r", "rmd", "quarto", "rnoweb", "rhelp", "rrst"]
+let R_auto_omni = ["r", "rnoweb", "rhelp"]
 
 let g:netrw_liststyle=3 " For nerdtree style explorer
 " instruct to use your own .screenrc file
@@ -125,6 +127,12 @@ if &term =~ '^screen'
 	set ttymouse=xterm2
 endif
 
+" set R location with:
+" let usrhome = $HOME
+" let g:R_cmd=usrhome."/src/svn/r-4-3/R/bin/R"
+" let g:R_app=usrhome."/src/svn/r-4-3/R/bin/R"
+"let g:R_app=usrhome."/src/svn/r-devel/R/bin/R"
+
 " start R with F2 key
 map <F2> <Plug>RStart
 imap <F2> <Plug>RStart
@@ -133,6 +141,7 @@ vmap <F2> <Plug>RStart
 vmap <Space> <Plug>RDSendSelection
 " send line to R with space bar
 nmap <Space> <Plug>RDSendLine
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -308,7 +317,7 @@ function Prompt(str, ...)
 endfunction
 
 " Use pathogen vim plugin
-execute pathogen#infect()
+" execute pathogen#infect()
 
 " Remap capslock key to escape inside vim
 au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
@@ -324,6 +333,7 @@ let R_args = ['--no-save', '--no-restore']
 " set RLOC outside of vimrc
 let R_path=$RLOC
 let R_LIBS_USER=$R_LIBS_USER
+let R_compldir=$RCOMP
 " let R_path = usrhome."/src/svn/r-devel/R/bin"
 " let $R_LIBS_USER= usrhome."/R/bioc-devel"
 
@@ -342,7 +352,7 @@ let &colorcolumn=join(range(81,999),",")
 highlight ColorColumn ctermbg=235 guibg=#2c2d27
 
 " remove trailing whitespace on save (R files)
-autocmd BufWritePre *.R,*md,*.txt :%s/\s\+$//e
+autocmd BufWritePre *.R,*md,*.txt,*.sas :%s/\s\+$//e
 
 " Emulate Tmux ^az
 function ZoomWindow()
