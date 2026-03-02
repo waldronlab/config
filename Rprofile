@@ -1,10 +1,10 @@
 options(
     useFancyQuotes = FALSE,
-    # replace jammy with code name for ubuntu version
+    # replace noble with code name for ubuntu version
     repos =
-        c(CRAN="https://packagemanager.posit.co/cran/__linux__/jammy/latest"),
+        c(CRAN="https://p3m.dev/cran/__linux__/noble/latest"),
     BiocManager.check_repositories = FALSE,
-    Ncpus = 4,
+    Ncpus = 8,
     max.print = 100,
 
     # https://kevinushey.github.io/blog/2015/02/02/rprofile-essentials/
