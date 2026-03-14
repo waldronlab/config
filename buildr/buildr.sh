@@ -79,8 +79,8 @@ F77="ccache gfortran"		    \
 ./configure 					\
     --prefix=${RINST}           \
     --enable-R-shlib 		    \
-    --with-blas				    \
-    --with-lapack				\
+    --with-blas="-lblas"	   \
+    --with-lapack="-llapack"   \
     --with-readline 		    \
     --with-tcltk                \
     --with-cairo=yes
@@ -95,6 +95,6 @@ F77="ccache gfortran"		    \
 #CXX="clang++ -03"				\
 #make svnonly
 
-make && make install
+make -j$(nproc) && make install
 
 echo "*** Done ***"
