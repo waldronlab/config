@@ -90,48 +90,32 @@ set laststatus=2
 let usrhome = $HOME
 
 " For tmux support
-" let R_external_term = 1
-" let R_term_cmd = 'tilix -a session-add-right -e'
-" let R_tmux_title = 'Nvim-R'
-
-let R_nvimpager = "tabnew"
+let R_external_term = 0
+let R_bracketed_paste = 1
 let R_rconsole_width = 80
 let R_min_editor_width = 18
-let R_external_term = 0
 let R_esc_term = 1
 let R_cmdchunk = 1
-let g:ScreenShellInitialFocus = 'shell'
-let R_set_omnifunc = ["r", "rmd", "quarto", "rnoweb", "rhelp", "rrst"]
-let R_auto_omni = ["r", "rnoweb", "rhelp"]
+let R_nvimpager = "tabnew"
+let R_notmuxconf = 1
+let R_source = $HOME . "/.vim/bundle/Nvim-R/R/tmux_split.vim"
 
-let g:netrw_liststyle=3 " For nerdtree style explorer
-" instruct to use your own .screenrc file
-let g:vimrplugin_noscreenrc = 1
-" For integration of r-plugin with screen.vim
-let g:vimrplugin_screenplugin = 1
-" Don't use conque shell if installed
-let vimrplugin_conqueplugin = 0
 " map the letter 'r' to send visually selected lines to R
 let g:vimrplugin_map_r = 1
 " see R documentation in a Vim buffer
 let vimrplugin_vimpager = "no"
 
+" Indentation settings
 set expandtab
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
-" allow mouse in all modes
+
+" Mouse support
 set mouse=a
 if &term =~ '^screen'
-	" tmux knows the extended mouse mode
-	set ttymouse=xterm2
+    set ttymouse=xterm2
 endif
-
-" set R location with:
-" let usrhome = $HOME
-" let g:R_cmd=usrhome."/src/svn/r-4-3/R/bin/R"
-" let g:R_app=usrhome."/src/svn/r-4-3/R/bin/R"
-"let g:R_app=usrhome."/src/svn/r-devel/R/bin/R"
 
 " start R with F2 key
 map <F2> <Plug>RStart
@@ -141,6 +125,11 @@ vmap <F2> <Plug>RStart
 vmap <Space> <Plug>RDSendSelection
 " send line to R with space bar
 nmap <Space> <Plug>RDSendLine
+" close R with F3 key
+map <F3> <Plug>RClose
+imap <F3> <Plug>RClose
+vmap <F3> <Plug>RClose
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -318,10 +307,13 @@ endfunction
 
 " Use pathogen vim plugin
 " execute pathogen#infect()
+" syntax on
 
-" Remap capslock key to escape inside vim
-au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-au VimLeave * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Caps_Lock'
+" Disable the default <Tab> mapping for Copilot
+" let g:copilot_no_tab_map = v:true
+
+" Map Ctrl+J to accept the suggestion
+" imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 
 " Use this as your backup directory for swp files (create first)
 set backupdir=~/.vim/backup
@@ -330,17 +322,30 @@ set directory=~/.vim/backup
 let maplocalleader = '/'
 let R_args = ['--no-save', '--no-restore']
 
-" set RLOC outside of vimrc
-let R_path=$RLOC
-let R_LIBS_USER=$R_LIBS_USER
-let R_compldir=$RCOMP
+" set R environment variables only if defined
+if $RLOC != "" | let R_path = $RLOC | endif
+if $R_LIBS_USER != "" | let R_LIBS_USER = $R_LIBS_USER | endif
+if $RCOMP != ""
+    let R_compldir = $RCOMP
+else
+    let R_compldir = $HOME . "/.cache/Vim-R"
+endif
 " let R_path = usrhome."/src/svn/r-devel/R/bin"
 " let $R_LIBS_USER= usrhome."/R/bioc-devel"
 
 " For jalvesaq/vimcmdline
 " let cmdline_app = {}
-" let cmdline_app['sh'] = '/bin/bash'
-" let cmdline_in_buffer = 0
+" let cmdline_app['sh'] = 'bash'
+" let cmdline_external_term = 0
+" let cmdline_follow_colorscheme = 1
+
+" Mappings for Bash (F4 to start, Space to send)
+" autocmd FileType sh nmap <buffer> <F4> <Plug>CmdLineStart
+" autocmd FileType sh imap <buffer> <F4> <Plug>CmdLineStart
+" autocmd FileType sh vmap <buffer> <F4> <Plug>CmdLineStart
+" autocmd FileType sh nmap <buffer> <Space> <Plug>CmdLineSendLine
+" autocmd FileType sh vmap <buffer> <Space> <Plug>CmdLineSendSelection
+" autocmd FileType sh nmap <buffer> <F3> <Plug>CmdLineQuit
 
 if exists('+colorcolumn')
     set colorcolumn=80
