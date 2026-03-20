@@ -5,8 +5,8 @@ version=$1
 # revision is the svn checkout revision number e.g., 12345
 revision=$2
 
-if [ -z "${version// }" ] || [ $version = "release" ] ||
-    [ $version = "oldrel" ]; then
+if [ -z "${version// }" ] || [ "$version" = "release" ] ||
+    [ "$version" = "oldrel" ]; then
     echo "Enter numeric version, e.g., '4-1', '4-2', or 'devel'"
     exit 1
 fi
@@ -29,8 +29,7 @@ done
     { echo -en "\nInstall dependencies and rerun this script\n"; exit 1; }
 
 baseurl='https://svn.r-project.org/R/'
-
-if [ $version = "devel" ]; then
+if [ "$version" = "devel" ]; then
     vers_folder="trunk${ending}"
 else
     vers_folder="branches/R-${version}-branch${ending}"
