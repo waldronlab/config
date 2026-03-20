@@ -84,7 +84,7 @@ F77="ccache gfortran"		    \
 #    --enable-memory-profiling
 
 #CC="clang -O3"                 \
-#CXX="clang++ -03"				\
+#CXX="clang++ -O3"                  \
 #make svnonly
 
 make -j$(nproc) && make install
