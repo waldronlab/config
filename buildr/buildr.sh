@@ -20,14 +20,14 @@ else
 fi
 
 echo "Checking for dependencies (svn ccache) ..."
+deps=0
 for name in svn ccache
 do
     [[ $(which $name 2>/dev/null) ]] || \
-        { echo -en "\n$name needs to be installed. See 'setup.sh'"; deps=1; }
+        { echo -e "\n$name needs to be installed. See 'setup.sh'"; deps=1; }
 done
-
 [[ $deps -ne 1 ]] && echo "OK" || \
-    { echo -en "\nInstall dependencies and rerun this script\n"; exit 1; }
+    { echo -e "\nInstall dependencies and rerun this script\n"; exit 1; }
 
 baseurl='https://svn.r-project.org/R/'
 if [ "$version" = "devel" ]; then
