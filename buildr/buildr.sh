@@ -52,38 +52,37 @@ echo -e "Will install to:\n  $RPREFIX"
 svn co "$FULLURL" .
 ./tools/rsync-recommended
 
-R_PAPERSIZE=letter				\
-R_BATCHSAVE="--no-save --no-restore"    \
-R_BROWSER=xdg-open				\
-PAGER=/usr/bin/pager		    \
-PERL=/usr/bin/perl				\
-R_UNZIPCMD=/usr/bin/unzip	    \
-R_ZIPCMD=/usr/bin/zip		    \
-R_PRINTCMD=/usr/bin/lpr		    \
-LIBnn=lib					    \
-AWK=/usr/bin/awk                \
-CC="ccache gcc"					\
+R_PAPERSIZE=letter                  \
+R_BATCHSAVE="--no-save --no-restore" \
+R_BROWSER=xdg-open                  \
+PAGER=/usr/bin/pager                \
+PERL=/usr/bin/perl                  \
+R_UNZIPCMD=/usr/bin/unzip           \
+R_ZIPCMD=/usr/bin/zip               \
+R_PRINTCMD=/usr/bin/lpr             \
+LIBnn=lib                           \
+AWK=/usr/bin/awk                    \
+CC="ccache gcc"                     \
 CFLAGS="-ggdb -pipe -std=gnu99 -Wall -pedantic" \
-CXX="ccache g++"				\
-CXXFLAGS="-ggdb -pipe -Wall -pedantic"  \
-FC="ccache gfortran"	 	    \
-F77="ccache gfortran"		    \
-./configure 					\
+CXX="ccache g++"                    \
+CXXFLAGS="-ggdb -pipe -Wall -pedantic" \
+FC="ccache gfortran"                \
+F77="ccache gfortran"               \
+./configure                         \
     --prefix="${RPREFIX}"           \
-    --enable-R-shlib 		    \
-    --with-blas="-lblas"	   \
-    --with-lapack="-llapack"   \
-    --with-readline 		    \
-    --with-tcltk                \
+    --enable-R-shlib                \
+    --with-blas="-lblas"            \
+    --with-lapack="-llapack"        \
+    --with-readline                 \
+    --with-tcltk                    \
     --with-cairo=yes
-#    --with-darwinssl            \ # MAC only
-#    --without-x                 \
-#    --with-libpng               \
-#    --with-libtiff              \
-#    --with-jpeglib              \
+#    --with-darwinssl               \ # macOS only
+#    --without-x                    \
+#    --with-libpng                  \
+#    --with-libtiff                 \
+#    --with-jpeglib                 \
 #    --enable-memory-profiling
-
-#CC="clang -O3"                 \
+#CC="clang -O3"                     \
 #CXX="clang++ -O3"                  \
 #make svnonly
 
