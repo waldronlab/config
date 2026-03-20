@@ -12,7 +12,7 @@ if [ -z "${version// }" ] || [ "$version" = "release" ] ||
     exit 1
 fi
 
-if [ ! -z "${revision// }" ]; then
+if [ -n "${revision// }" ]; then
     echo "revision is set to ${revision}"
     ending="/@${revision}"
 else
