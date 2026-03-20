@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 # version must be the R-X-Y-branch version number e.g, '4-1' or 'devel'
 version=$1
