@@ -37,27 +37,19 @@ else
 fi
 
 FULLURL=$baseurl$vers_folder
-
-RFOLDER="r-$version/R"
-
+RFOLDER="r-$version"
 INSTALL_DIR=$HOME/src/svn
-
 RINST=$INSTALL_DIR/$RFOLDER
+RSOURCE=$RINST/source   # svn checkout and build
+RPREFIX=$RINST/inst     # clean install target
 
-for dir in $INSTALL_DIR $RINST
-do
-    if [ ! -d $dir ]; then
-        mkdir -p $dir
-    fi
-done
+mkdir -p "$RSOURCE"
+cd "$RSOURCE"
 
-cd $INSTALL_DIR
+echo -e "Getting R version from:\n  $FULLURL\nto:\n  $RSOURCE"
+echo -e "Will install to:\n  $RPREFIX"
 
-echo -e "Getting R version from:\n $FULLURL to \n $RINST"
-svn co $FULLURL $RINST
-
-cd $RINST
-
+svn co "$FULLURL" .
 ./tools/rsync-recommended
 
 R_PAPERSIZE=letter				\
@@ -77,7 +69,7 @@ CXXFLAGS="-ggdb -pipe -Wall -pedantic"  \
 FC="ccache gfortran"	 	    \
 F77="ccache gfortran"		    \
 ./configure 					\
-    --prefix=${RINST}           \
+    --prefix="${RPREFIX}"           \
     --enable-R-shlib 		    \
     --with-blas="-lblas"	   \
     --with-lapack="-llapack"   \
@@ -97,4 +89,7 @@ F77="ccache gfortran"		    \
 
 make -j$(nproc) && make install
 
+echo ""
 echo "*** Done ***"
+echo "R installed to: ${RPREFIX}"
+echo "Run with:       ${RPREFIX}/bin/R"
