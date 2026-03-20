@@ -4,7 +4,7 @@ set -euo pipefail
 # version must be the R-X-Y-branch version number e.g, '4-1' or 'devel'
 version=$1
 # revision is the svn checkout revision number e.g., 12345
-revision=$2
+revision=${2:-}
 
 if [ -z "${version// }" ] || [ "$version" = "release" ] ||
     [ "$version" = "oldrel" ]; then
