@@ -17,21 +17,23 @@ alias l='ls -CF'
 alias rm='rm -i'
 alias del="$HOME/src/move_to_trash.sh"
 
-## Modify the R version folders (in src/svn) after every release
-## Note. These folders correspond to ./buildr.sh
-alias Rold="R_LIBS_USER=$HOME/R/bioc-oldrel $HOME/src/svn/r-4-4/R/bin/R --no-save --no-restore-data --no-environ"
-alias Rrel="R_LIBS_USER=$HOME/R/bioc-release $HOME/src/svn/r-4-5/R/bin/R --no-save --no-restore-data --no-environ"
-alias Rdev="R_LIBS_USER=$HOME/R/bioc-devel $HOME/src/svn/r-devel/R/bin/R --no-save --no-restore-data"
+## --- UPDATE THESE PATHS EACH BIOC RELEASE ---
+_r() { local v=$1 lib=$2; shift 2; R_LIBS_USER=$HOME/R/$lib $HOME/src/svn/$v/inst/bin/R "$@"; }
+alias Rold="_r r-4-4 bioc-oldrel --no-save --no-restore-data --no-environ"
+alias Rrel="_r r-4-5 bioc-release --no-save --no-restore-data --no-environ"
+alias Rdev="_r r-devel bioc-devel --no-save --no-restore-data --no-environ"
 
-alias rstudev="RSTUDIO_WHICH_R=$HOME/src/svn/r-devel/R/bin/R R_LIBS_USER=$HOME/R/bioc-devel rstudio --no-save --no-restore-data --no-environ"
-alias rsturel="RSTUDIO_WHICH_R=$HOME/src/svn/r-release/R/bin/R R_LIBS_USER=$HOME/R/bioc-release rstudio --no-save --no-restore-data --no-environ"
+## --- UPDATE THESE PATHS EACH BIOC RELEASE ---
+_rstu() { local v=$1 lib=$2; RSTUDIO_WHICH_R=$HOME/src/svn/$v/inst/bin/R R_LIBS_USER=$HOME/R/$lib rstudio; }
+alias rstuold="_rstu r-4-4 bioc-oldrel"
+alias rsturel="_rstu r-4-5 bioc-release"
+alias rstudev="_rstu r-devel bioc-devel"
 
 ## If you need independent R libraries for testing
-## alias r43="R_LIBS_USER=$HOME/R/r-4-3 $HOME/src/svn/r-4-3/R/bin/R --no-save --no-restore-data --no-environ"
-## alias devel="R_LIBS_USER=$HOME/R/r-devel $HOME/src/svn/r-devel/R/bin/R --no-save --no-restore-data --no-environ"
+## alias r45="R_LIBS_USER=$HOME/R/r-4-5 $HOME/src/svn/r-4-5/inst/bin/R --no-save --no-restore-data --no-environ"
+## alias devel="R_LIBS_USER=$HOME/R/r-devel $HOME/src/svn/r-devel/inst/bin/R --no-save --no-restore-data --no-environ"
 
-alias installr='Rrel CMD INSTALL --no-test-load --no-staged-install'
-alias installd='Rdev CMD INSTALL --no-test-load --no-staged-install'
+alias INSTALL='Rdev CMD INSTALL --no-test-load --no-staged-install'
 
 alias buildr='Rrel CMD build --no-build-vignettes'
 alias buildd='Rdev CMD build --no-build-vignettes'
@@ -41,18 +43,18 @@ alias checkd='time Rdev CMD check --no-vignettes --no-manual'
 
 alias bioccheck='Rdev -e "BiocCheck::BiocCheck()"'
 
-## For vim users who need different versions of R
-## alias vimo='R_LIBS_USER=$HOME/R/bioc-oldrel/  RLOC=$HOME/src/svn/r-oldrel/R/bin  vim'
-## alias vimr='R_LIBS_USER=$HOME/R/bioc-release/ RLOC=$HOME/src/svn/r-release/R/bin vim'
-## alias vimd='R_LIBS_USER=$HOME/R/bioc-devel/   RLOC=$HOME/src/svn/r-devel/R/bin   vim'
+## --- UPDATE THESE PATHS EACH BIOC RELEASE ---
+_vim() { local v=$1 lib=$2; shift 2; R_LIBS_USER=$HOME/R/$lib RLOC=$HOME/src/svn/$v/inst/bin vim "$@"; }
+alias vimo="_vim r-4-4 bioc-oldrel"
+alias vimr="_vim r-4-5 bioc-release"
+alias vimd="_vim r-devel bioc-devel"
 
 alias locate='locate -i'
 alias sudo='sudo '
 alias tmux="TERM=screen-256color-bce tmux"
 
 alias fullpath='readlink -f'
-alias bump="$HOME/scripts/version_bump.sh"
-alias rm='rm -i'
+alias bump="$HOME/bin/version_bump.sh"
 
 if [ -x /usr/bin/subversion ]; then
     alias svnvimdiff="svn diff -r PREV | view -"
