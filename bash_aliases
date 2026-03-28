@@ -31,20 +31,24 @@ alias rstudev="_rstu r-devel bioc-devel"
 
 ## If you need independent R libraries for testing
 ## alias r45="R_LIBS_USER=$HOME/R/r-4-5 $HOME/src/svn/r-4-5/inst/bin/R --no-save --no-restore-data --no-environ"
+## alias r46="R_LIBS_USER=$HOME/R/r-4-6 $HOME/src/svn/r-4-6/inst/bin/R --no-save --no-restore-data --no-environ"
 ## alias devel="R_LIBS_USER=$HOME/R/r-devel $HOME/src/svn/r-devel/inst/bin/R --no-save --no-restore-data --no-environ"
 
 alias INSTALL='Rdev CMD INSTALL --no-test-load --no-staged-install'
+alias ddoc='Rdev -e "devtools::document()"'
 
-alias buildr='Rrel CMD build --no-build-vignettes'
-alias buildd='Rdev CMD build --no-build-vignettes'
+alias buildr="R_ENVIRON_USER=$HOME/.Renviron.bioc Rrel CMD build --no-build-vignettes"
+alias buildd="R_ENVIRON_USER=$HOME/.Renviron.bioc Rdev CMD build --no-build-vignettes"
 
-alias checkr='time Rrel CMD check --no-vignettes --no-manual'
-alias checkd='time Rdev CMD check --no-vignettes --no-manual'
+alias checkr="R_ENVIRON_USER=$HOME/.Renviron.bioc time Rrel CMD check --no-vignettes --no-manual"
+alias checkd="time _R_CHECK_SUGGESTS_ONLY_=true _R_CHECK_FORCE_SUGGESTS_=false R_ENVIRON_USER=$HOME/.Renviron.bioc Rdev CMD check --no-vignettes --no-manual"
+
+alias coverage='Rdev -e "covr::package_coverage(type = \"all\")"'
 
 alias bioccheck='Rdev -e "BiocCheck::BiocCheck()"'
 
 ## --- UPDATE THESE PATHS EACH BIOC RELEASE ---
-_vim() { local v=$1 lib=$2; shift 2; R_LIBS_USER=$HOME/R/$lib RLOC=$HOME/src/svn/$v/inst/bin vim "$@"; }
+_vim() { local v=$1 lib=$2; shift 2; R_LIBS_USER=$HOME/R/$lib RLOC=$HOME/src/svn/$v/inst/bin /usr/local/bin/vim "$@"; }
 alias vimo="_vim r-4-4 bioc-oldrel"
 alias vimr="_vim r-4-5 bioc-release"
 alias vimd="_vim r-devel bioc-devel"
