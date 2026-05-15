@@ -48,23 +48,25 @@ echo "==> $new_version_string ($version_change_summary)"
 sed -i -E "s/^Version:[[:space:]]*.*$/Version: $new_version_string/" "$desc_file"
 
 if [[ "$update_cff" == true && -f "$cff_file" ]]; then
+    cff_updated=false
     if grep -Eq '^[[:space:]]*version:[[:space:]]*' "$cff_file"; then
         if grep -Eq '^[[:space:]]*version:[[:space:]]*.*#' "$cff_file"; then
-            sed -i -E "s|^([[:space:]]*version:[[:space:]]*)[^#]*([[:space:]]+#.*)$|\\1$new_version_string\\2|" "$cff_file"
+            sed -i -E "s|^([[:space:]]*version:[[:space:]]*)[\"']?[0-9A-Za-z.+-]+[\"']?([[:space:]]+#.*)$|\\1$new_version_string\\2|" "$cff_file"
         else
-            sed -i -E "s|^([[:space:]]*version:[[:space:]]*).*$|\\1$new_version_string|" "$cff_file"
+            sed -i -E "s|^([[:space:]]*version:[[:space:]]*)[\"']?[0-9A-Za-z.+-]+[\"']?([[:space:]]*)$|\\1$new_version_string\\2|" "$cff_file"
         fi
         if ! grep -Eq "^[[:space:]]*version:[[:space:]]*$new_version_string([[:space:]]*(#.*)?)?$" "$cff_file"; then
             echo "Failed to update version in $cff_file"
             exit 1
         fi
+        cff_updated=true
     else
         echo "No version field found in $cff_file; skipping"
     fi
 fi
 
 files_to_commit=("$desc_file")
-if [[ "$update_cff" == true && -f "$cff_file" ]]; then
+if [[ "${cff_updated:-false}" == true ]]; then
     files_to_commit+=("$cff_file")
 fi
 
