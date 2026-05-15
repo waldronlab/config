@@ -38,18 +38,23 @@ x="${BASH_REMATCH[1]}"
 y="${BASH_REMATCH[2]}"
 z="${BASH_REMATCH[3]}"
 
+old_z="$z"
 z=$((z+1))
-version_change_summary="z->z+1"
+version_change_summary="$old_z->$z"
 
 new_version_string="$x.$y.$z"
 echo "==> $new_version_string ($version_change_summary)"
 
 new_line="Version: $new_version_string"
-sed -i -E "s/^Version:.*/$new_line/" "$desc_file"
+sed -i -E "s/^Version:[[:space:]]*.*$/$new_line/" "$desc_file"
 
 if [[ "$update_cff" == true && -f "$cff_file" ]]; then
     if grep -Eq '^[[:space:]]*version:[[:space:]]*' "$cff_file"; then
         sed -i -E "s|^([[:space:]]*version:[[:space:]]*).*$|\\1$new_version_string|" "$cff_file"
+        if ! grep -Eq "^[[:space:]]*version:[[:space:]]*$new_version_string([[:space:]]*(#.*)?)?$" "$cff_file"; then
+            echo "Failed to update version in $cff_file"
+            exit 1
+        fi
     else
         echo "No version field found in $cff_file; skipping"
     fi
