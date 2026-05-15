@@ -34,15 +34,15 @@ if [[ ! "$version_string" =~ ^([0-9]+)[.-]([0-9]+)[.-]([0-9]+)$ ]]; then
     exit 1
 fi
 
-x="${BASH_REMATCH[1]}"
-y="${BASH_REMATCH[2]}"
-z="${BASH_REMATCH[3]}"
+major="${BASH_REMATCH[1]}"
+minor="${BASH_REMATCH[2]}"
+patch="${BASH_REMATCH[3]}"
 
-old_z="$z"
-z=$((z+1))
-version_change_summary="$old_z->$z"
+old_patch="$patch"
+patch=$((patch+1))
+version_change_summary="$old_patch->$patch"
 
-new_version_string="$x.$y.$z"
+new_version_string="$major.$minor.$patch"
 echo "==> $new_version_string ($version_change_summary)"
 
 new_line="Version: $new_version_string"
