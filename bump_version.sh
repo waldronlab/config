@@ -27,8 +27,7 @@ if [[ -z "$old_line" ]]; then
     exit 1
 fi
 
-VERSION_LINE_REGEXP='^Version:[[:space:]]*([^[:space:]].*[^[:space:]])[[:space:]]*$'
-version_string=$(echo "$old_line" | sed -E "s/$VERSION_LINE_REGEXP/\\1/")
+version_string=$(echo "$old_line" | sed -E 's/^Version:[[:space:]]*//; s/[[:space:]]*$//')
 
 if [[ ! "$version_string" =~ ^([0-9]+)[.-]([0-9]+)[.-]([0-9]+)$ ]]; then
     echo "Unsupported version format in $desc_file: $version_string"
@@ -40,17 +39,17 @@ y="${BASH_REMATCH[2]}"
 z="${BASH_REMATCH[3]}"
 
 z=$((z+1))
-action="z->z+1"
+version_change_summary="z->z+1"
 
 new_version_string="$x.$y.$z"
-echo "==> $new_version_string ($action)"
+echo "==> $new_version_string ($version_change_summary)"
 
 new_line="Version: $new_version_string"
 sed -i -E "s/^Version:.*/$new_line/" "$desc_file"
 
 if [[ "$update_cff" == true && -f "$cff_file" ]]; then
     if grep -Eq '^[[:space:]]*version:[[:space:]]*' "$cff_file"; then
-        sed -i -E "s|^([[:space:]]*version:[[:space:]]*)([\"']?)[^\"'#]*\2([[:space:]]*(#.*)?)$|\\1\\2$new_version_string\\2\\3|" "$cff_file"
+        sed -i -E "s|^([[:space:]]*version:[[:space:]]*).*$|\\1$new_version_string|" "$cff_file"
     else
         echo "No version field found in $cff_file; skipping"
     fi
