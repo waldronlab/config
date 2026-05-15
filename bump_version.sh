@@ -45,12 +45,15 @@ version_change_summary="$old_patch->$patch"
 new_version_string="$major.$minor.$patch"
 echo "==> $new_version_string ($version_change_summary)"
 
-new_line="Version: $new_version_string"
-sed -i -E "s/^Version:[[:space:]]*.*$/$new_line/" "$desc_file"
+sed -i -E "s/^Version:[[:space:]]*.*$/Version: $new_version_string/" "$desc_file"
 
 if [[ "$update_cff" == true && -f "$cff_file" ]]; then
     if grep -Eq '^[[:space:]]*version:[[:space:]]*' "$cff_file"; then
-        sed -i -E "s|^([[:space:]]*version:[[:space:]]*).*$|\\1$new_version_string|" "$cff_file"
+        if grep -Eq '^[[:space:]]*version:[[:space:]]*.*#' "$cff_file"; then
+            sed -i -E "s|^([[:space:]]*version:[[:space:]]*)[^#]*([[:space:]]+#.*)$|\\1$new_version_string\\2|" "$cff_file"
+        else
+            sed -i -E "s|^([[:space:]]*version:[[:space:]]*).*$|\\1$new_version_string|" "$cff_file"
+        fi
         if ! grep -Eq "^[[:space:]]*version:[[:space:]]*$new_version_string([[:space:]]*(#.*)?)?$" "$cff_file"; then
             echo "Failed to update version in $cff_file"
             exit 1
@@ -60,9 +63,15 @@ if [[ "$update_cff" == true && -f "$cff_file" ]]; then
     fi
 fi
 
-git add "$desc_file"
+files_to_commit=("$desc_file")
 if [[ "$update_cff" == true && -f "$cff_file" ]]; then
-    git add "$cff_file"
+    files_to_commit+=("$cff_file")
 fi
 
+if git diff --quiet -- "${files_to_commit[@]}"; then
+    echo "No version changes detected; nothing to commit"
+    exit 1
+fi
+
+git add "${files_to_commit[@]}"
 git commit -m "version bump $new_version_string"
