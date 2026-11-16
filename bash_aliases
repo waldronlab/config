@@ -19,14 +19,14 @@ alias del="$HOME/src/move_to_trash.sh"
 
 ## --- UPDATE THESE PATHS EACH BIOC RELEASE ---
 _r() { local v=$1 lib=$2; shift 2; R_LIBS_USER=$HOME/R/$lib $HOME/src/svn/$v/inst/bin/R "$@"; }
-alias Rold="_r r-4-4 bioc-oldrel --no-save --no-restore-data --no-environ"
-alias Rrel="_r r-4-5 bioc-release --no-save --no-restore-data --no-environ"
+alias Rold="_r r-4-5 bioc-oldrel --no-save --no-restore-data --no-environ"
+alias Rrel="_r r-4-6 bioc-release --no-save --no-restore-data --no-environ"
 alias Rdev="_r r-devel bioc-devel --no-save --no-restore-data --no-environ"
 
 ## --- UPDATE THESE PATHS EACH BIOC RELEASE ---
 _rstu() { local v=$1 lib=$2; RSTUDIO_WHICH_R=$HOME/src/svn/$v/inst/bin/R R_LIBS_USER=$HOME/R/$lib rstudio; }
-alias rstuold="_rstu r-4-4 bioc-oldrel"
-alias rsturel="_rstu r-4-5 bioc-release"
+alias rstuold="_rstu r-4-5 bioc-oldrel"
+alias rsturel="_rstu r-4-6 bioc-release"
 alias rstudev="_rstu r-devel bioc-devel"
 
 ## If you need independent R libraries for testing
@@ -49,8 +49,8 @@ alias bioccheck='Rdev -e "BiocCheck::BiocCheck()"'
 
 ## --- UPDATE THESE PATHS EACH BIOC RELEASE ---
 _vim() { local v=$1 lib=$2; shift 2; R_LIBS_USER=$HOME/R/$lib RLOC=$HOME/src/svn/$v/inst/bin /usr/local/bin/vim "$@"; }
-alias vimo="_vim r-4-4 bioc-oldrel"
-alias vimr="_vim r-4-5 bioc-release"
+alias vimo="_vim r-4-5 bioc-oldrel"
+alias vimr="_vim r-4-6 bioc-release"
 alias vimd="_vim r-devel bioc-devel"
 
 alias locate='locate -i'
