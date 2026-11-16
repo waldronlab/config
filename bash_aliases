@@ -58,7 +58,7 @@ alias sudo='sudo '
 alias tmux="TERM=screen-256color-bce tmux"
 
 alias fullpath='readlink -f'
-alias bump="$HOME/bin/version_bump.sh"
+alias bump="$HOME/gh/utils/version_bump.sh"
 
 if [ -x /usr/bin/subversion ]; then
     alias svnvimdiff="svn diff -r PREV | view -"
