@@ -48,10 +48,10 @@ alias coverage='Rdev -e "covr::package_coverage(type = \"all\")"'
 alias bioccheck='Rdev -e "BiocCheck::BiocCheck()"'
 
 ## --- UPDATE THESE PATHS EACH BIOC RELEASE ---
-_vim() { local v=$1 lib=$2; shift 2; R_LIBS_USER=$HOME/R/$lib RLOC=$HOME/src/svn/$v/inst/bin /usr/local/bin/vim "$@"; }
-alias vimo="_vim r-4-5 bioc-oldrel"
-alias vimr="_vim r-4-6 bioc-release"
-alias vimd="_vim r-devel bioc-devel"
+_rvim() { local v=$1 lib=$2; shift 2; R_LIBS_USER=$HOME/R/$lib RLOC=$HOME/src/svn/$v/inst/bin command vim "$@"; }
+alias vimo="_rvim r-4-5 bioc-oldrel"
+alias vimr="_rvim r-4-6 bioc-release"
+alias vimd="_rvim r-devel bioc-devel"
 
 alias locate='locate -i'
 alias sudo='sudo '
