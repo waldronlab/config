@@ -14,5 +14,5 @@ if [ -f "$HOME/air.toml" ] && [ ! -f "$DIR_PATH/air.toml" ]; then
 fi
 
 # Run air with the original arguments
-/home/user/.local/bin/air "$@"
+"$HOME/.local/bin/air" "$@"
 
