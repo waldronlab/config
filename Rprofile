@@ -1,8 +1,14 @@
+if (interactive() && nzchar(system.file(package = "colorout")))
+    library(colorout)
+
+codename <- system2("lsb_release", "-cs", stdout = TRUE)
+
 options(
     useFancyQuotes = FALSE,
-    # replace noble with code name for ubuntu version
+    # repos = c(CRAN = "https://cloud.r-project.org/"),
+    ## repos for Ubuntu releases
     repos =
-        c(CRAN="https://p3m.dev/cran/__linux__/noble/latest"),
+        c(CRAN = paste0("https://p3m.dev/cran/__linux__/", codename, "/latest")),
     BiocManager.check_repositories = FALSE,
     Ncpus = 8,
     max.print = 100,
