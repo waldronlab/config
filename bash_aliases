@@ -24,7 +24,7 @@ alias Rrel="_r r-4-6 bioc-release --no-save --no-restore-data --no-environ"
 alias Rdev="_r r-devel bioc-devel --no-save --no-restore-data --no-environ"
 
 ## --- UPDATE THESE PATHS EACH BIOC RELEASE ---
-_rstu() { local v=$1 lib=$2; RSTUDIO_WHICH_R=$HOME/src/svn/$v/inst/bin/R R_LIBS_USER=$HOME/R/$lib rstudio; }
+_rstu() { local v=$1 lib=$2; RSTUDIO_WHICH_R=$HOME/src/svn/$v/inst/bin/R R_BIOC_LIB=$HOME/R/$lib rstudio; }
 alias rstuold="_rstu r-4-5 bioc-oldrel"
 alias rsturel="_rstu r-4-6 bioc-release"
 alias rstudev="_rstu r-devel bioc-devel"

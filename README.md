@@ -22,3 +22,29 @@ To install all the packages listed in Rpackages.txt:
 ```
 BiocManager::install(setdiff(read.csv("https://raw.githubusercontent.com/waldronlab/config/master/Rpackages.txt", as.is=TRUE)[, 1], rownames(installed.packages())))
 ```
+
+## RStudio launchers
+
+`rstudio-launchers.sh` creates one Ubuntu app-menu launcher per R /
+Bioconductor setup ("RStudio Rel", "RStudio Dev", "RStudio Old"). Each one
+starts RStudio with `RSTUDIO_WHICH_R` pointing to an R build in
+`~/src/svn` and `R_BIOC_LIB` pointing to a library in `~/R`.
+
+```
+./rstudio-launchers.sh           # create or refresh the launchers
+./rstudio-launchers.sh --remove  # delete them (restores the system RStudio launcher)
+```
+
+Edit the `SETUPS` list at the top of the script when R or Bioconductor
+versions change, then re-run it. `DEFAULT` picks the setup used when opening
+`.R`/`.Rproj` files; the script writes a user copy of the system
+`rstudio.desktop` with that setup and hides it from the app menu, so only the
+Rel/Dev/Old launchers are shown. Set `DEFAULT` to `""` to restore the system
+"RStudio" launcher.
+
+For `R_BIOC_LIB` to take effect, `~/.Renviron` must set the library from it
+instead of hard-coding it:
+
+```
+R_LIBS_USER=${R_BIOC_LIB-/home/username/R/bioc-release}
+```
