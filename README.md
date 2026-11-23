@@ -25,10 +25,15 @@ BiocManager::install(setdiff(read.csv("https://raw.githubusercontent.com/waldron
 
 ## RStudio launchers
 
-`rstudio-launchers.sh` creates one Ubuntu app-menu launcher per R /
-Bioconductor setup ("RStudio Rel", "RStudio Dev", "RStudio Old"). Each one
-starts RStudio with `RSTUDIO_WHICH_R` pointing to an R build in
-`~/src/svn` and `R_BIOC_LIB` pointing to a library in `~/R`.
+`rstudio-launchers.sh` creates one launcher per R / Bioconductor setup
+("RStudio Rel", "RStudio Dev", "RStudio Old"). Each one starts RStudio with
+`RSTUDIO_WHICH_R` pointing to an R build in `~/src/svn` (see `buildr/`) and
+`R_BIOC_LIB` pointing to a library in `~/R`.
+
+* Linux: app-menu entries in `~/.local/share/applications`
+* macOS: small apps (`RStudio Rel.app`, ...) in `~/Applications`, found by
+  Spotlight and Launchpad; drag them to the Dock to pin them. They run
+  `open -n -a RStudio --env ...`, so each one starts a separate RStudio.
 
 ```
 ./rstudio-launchers.sh           # create or refresh the launchers
@@ -36,7 +41,7 @@ starts RStudio with `RSTUDIO_WHICH_R` pointing to an R build in
 ```
 
 Edit the `SETUPS` list at the top of the script when R or Bioconductor
-versions change, then re-run it. `DEFAULT` picks the setup used when opening
+versions change, then re-run it. On Linux, `DEFAULT` picks the setup used when opening
 `.R`/`.Rproj` files; the script writes a user copy of the system
 `rstudio.desktop` with that setup and hides it from the app menu, so only the
 Rel/Dev/Old launchers are shown. Set `DEFAULT` to `""` to restore the system
