@@ -1,14 +1,18 @@
 if (interactive() && nzchar(system.file(package = "colorout")))
     library(colorout)
 
-codename <- system2("lsb_release", "-cs", stdout = TRUE)
+## p3m Linux binaries need the distro codename; elsewhere (e.g., macOS)
+## use CRAN, which serves binaries for the platform
+cran_repo <- if (nzchar(Sys.which("lsb_release"))) {
+    codename <- system2("lsb_release", "-cs", stdout = TRUE)
+    paste0("https://p3m.dev/cran/__linux__/", codename, "/latest")
+} else {
+    "https://cloud.r-project.org/"
+}
 
 options(
     useFancyQuotes = FALSE,
-    # repos = c(CRAN = "https://cloud.r-project.org/"),
-    ## repos for Ubuntu releases
-    repos =
-        c(CRAN = paste0("https://p3m.dev/cran/__linux__/", codename, "/latest")),
+    repos = c(CRAN = cran_repo),
     BiocManager.check_repositories = FALSE,
     Ncpus = 8,
     max.print = 100,
